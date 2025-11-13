@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>關於我 - Chen Wun-Yan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -23,34 +24,170 @@
     h1 {
       text-align: center;
       color: #776b5d;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       font-size: 2.5rem;
+      position: relative;
     }
+    h1::after {
+      content: '';
+      width: 60px;
+      height: 3px;
+      background: #9c8b7a;
+      display: block;
+      margin: 1rem auto 0;
+    }
+    h2 {
+      color: #9c8b7a;
+      margin: 2rem 0 1rem;
+      font-size: 1.5rem;
+      border-left: 4px solid #9c8b7a;
+      padding-left: 1rem;
+    }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.5rem; }
     .back-link {
       display: block;
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 3rem;
       color: #9c8b7a;
       text-decoration: none;
       font-weight: 600;
+      font-size: 1.1rem;
     }
     .back-link:hover { color: #b7a99b; }
+    .resume-btn {
+      display: inline-block;
+      margin: 1.5rem 0;
+      padding: 0.8rem 2rem;
+      background: #9c8b7a;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .resume-btn:hover { background: #b7a99b; }
+	/* === 履歷預覽圖 + 按鈕 === */
+	.resume-preview {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  gap: 1.5rem;
+	  margin: 1.5rem 0;
+	}
+
+	.resume-image-link {
+	  display: block;
+	  width: 100%;
+	  max-width: 500px;
+	  border-radius: 12px;
+	  overflow: hidden;
+	  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+	  transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.resume-image-link:hover {
+	  transform: translateY(-5px);
+	  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+	}
+
+	.resume-preview-img {
+	  width: 100%;
+	  height: auto;
+	  display: block;
+	  border-radius: 12px;
+	  transition: transform 0.4s ease;
+	}
+
+	.resume-image-link:hover .resume-preview-img {
+	  transform: scale(1.02);
+	}
+
+	/* 下載按鈕（改文字 + 圖標） */
+	.resume-btn {
+	  display: inline-flex;
+	  align-items: center;
+	  gap: 0.5rem;
+	  padding: 0.9rem 2rem;
+	  background: #9c8b7a;
+	  color: white;
+	  text-decoration: none;
+	  border-radius: 8px;
+	  font-weight: 600;
+	  font-size: 1.1rem;
+	  transition: all 0.3s ease;
+	  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	}
+
+	.resume-btn:hover {
+	  background: #b7a99b;
+	  transform: translateY(-2px);
+	  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+	}
+
+	.resume-btn::after {
+	  content: "↓";
+	  font-size: 1.2rem;
+	}
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>關於我 - 詳細介紹</h1>
-    <p>這裡是你的完整自我介紹...</p>
-    <p>你可以放上：</p>
-    <ul>
-      <li>學歷背景</li>
-      <li>專業技能</li>
-      <li>專案經驗</li>
-      <li>興趣與價值觀</li>
-      <li>未來目標</li>
-    </ul>
+    <h1>關於我</h1>
 
+    <h2>學歷背景</h2>
+    <p>實踐大學（台北校區） 資訊科技與管理學系<br>資訊應用服務創新學程（深化學成）<br>企業E化學程（跨領域）<br>2022 – 2026/1（預計畢業）</p>
+
+    <h2>專業技能</h2>
+    <ul>
+      <li>前端開發：HTML, CSS, JavaScript, Responsive Design（響應式網頁設計）</li>
+      <li>資料分析：Python, SQL, Power BI, Excel</li>
+      <li>雲端技術：AWS, SAP S/4HANA Cloud</li>
+      <li>設計工具：Figma, Canva, Adobe （Photoshop, Illustrator, Premiere Pro, InDesign, After Effects, Dreamweaver）</li>
+	  <li>ERP系統：SAP S/4HANA, MF2000</li>
+	</ul>
+
+    <h2>專案經驗</h2>
+    <ul>
+      <li><strong>個人網站</strong> – 響應式設計 + 動態互動</li>
+      <li><strong>AWS 英文學習網站</strong> – 使用 Glue + S3 建置 ETL</li>
+	  <li><strong>AWS 身分驗證機制</strong> – 使用 Glue + S3 建置 ETL</li>
+      <li><strong>SAP 企業合作ESG分析</strong> – MySQL 正規化設計</li>
+	  <li><strong>AR 捷運室內導航</strong> – MySQL 正規化設計</li>
+	  <li><strong>追星記帳自動化系統</strong> – Google 表單、AppSheet 與 Excel</li>
+	  <li><strong>企業網頁設計專案 </strong> – Google 表單、AppSheet 與 Excel</li>
+	  <li><strong>高速公路動物致死與交通事故分析專案 </strong> – Google 表單、AppSheet 與 Excel</li>
+	  <li><strong>從 Jetson Nano 進入人工智慧領域 </strong> – Google 表單、AppSheet 與 Excel</li>
+    </ul>
+	
+	<h2>實習經驗</h2>
+    <ul>
+      <li>學校圖資服務一組 擔任維修隊</li>
+      <li>計算機概論與網頁設計助教</li>
+      <li>SAP 導入實習顧問 ＠CERPS</li>
+	</ul>
+
+    <h2>興趣與價值觀</h2>
+    <p>
+	我對資訊技術與數據探索充滿熱情，<strong>特別喜歡從複雜的資料中挖掘價值，揭示背後的故事與趨勢</strong>。技術不僅是工具，更是一種能夠推動產業與社會進步的力量。過程中的持續學習與挑戰，讓我體會到知識的力量與成長的意義。此外，我也重視團隊合作與領導力，認為開放溝通與共同目標是專案成功的關鍵。工作與學習的過程中，我始終秉持誠信、耐心與務實的態度，這些價值觀塑造了我面對困難時的堅韌與穩健。
+	</p>
+
+    <h2>未來目標</h2>
+    <p>
+	展望未來，我希望成為一位具備深厚技術底蘊與產業洞察的<strong>資料探勘專家</strong>，能將先進的數據分析與智慧管理技術實際運用於企業決策優化中。<strong>我期望持續進修，深化人工智慧、雲端技術與ESG永續發展的整合應用能力</strong>，為企業創造更高的價值並推動永續轉型。同時，我也志在成為跨領域的橋樑，促進資訊科技與企業管理的有效融合，並以技術驅動創新，為社會帶來積極的改變。中央大學資訊管理研究所將是我實現這些願景的重要里程碑。
+	</p>
+
+    <h2>我的履歷</h2>
+    <p>想了解更詳細的經歷？點擊下方下載完整履歷：</p>
+    <!-- 履歷預覽圖 + 下載按鈕 -->
+	<div class="resume-preview">
+	  <a href="resume/Hilda_Resume.pdf" target="_blank" class="resume-image-link">
+		<img src="resume/Hilda_Resume.png" alt="履歷預覽" class="resume-preview-img">
+	  </a>
+	  <a href="resume/Hilda_Resume.pdf" download class="resume-btn" target="_blank" >
+		下載履歷 PDF
+	  </a>
+	</div>
     <a href="index.html" class="back-link">← 回到首頁</a>
   </div>
 
