@@ -639,7 +639,252 @@
 		font-size: 1.2rem;
 	  }
 	}	
-		
+	
+	/* === 核心能力指標 === */
+.skills-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin: 2rem 0;
+  align-items: center;
+}
+
+.skill-chart {
+  position: relative;
+  height: 300px;
+}
+
+.skill-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.skill-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.skill-label {
+  min-width: 80px;
+  font-weight: 600;
+  color: #776b5d;
+  font-size: 0.95rem;
+}
+
+.skill-progress {
+  flex: 1;
+  height: 8px;
+  background: #e4ddd6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #9c8b7a, #b7a99b);
+  border-radius: 4px;
+  width: 0;
+  transition: width 2s ease-in-out;
+  animation-delay: 0.5s;
+}
+
+.progress-fill.pro {
+  background: linear-gradient(90deg, #776b5d, #9c8b7a);
+}
+
+.skill-score {
+  font-weight: 700;
+  color: #9c8b7a;
+  font-size: 0.9rem;
+  min-width: 35px;
+  text-align: right;
+}
+
+.pro-title {
+  text-align: center;
+  color: #9c8b7a;
+  margin: 3rem 0 1.5rem;
+  font-size: 1.6rem;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .skill-chart {
+    height: 250px;
+  }
+  
+  .skill-bar {
+    gap: 0.8rem;
+  }
+}
+
+
+/* === 個人資訊卡 === */
+.contact-info {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.contact-info h2 {
+  color: #776b5d;
+  margin-bottom: 2rem;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profile-img img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #e4ddd6;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.profile-details h3 {
+  font-size: 1.8rem;
+  color: #776b5d;
+  margin: 0.5rem 0;
+}
+
+.en-name {
+  font-size: 1.1rem;
+  color: #9c8b7a;
+  font-style: italic;
+  margin: 0.3rem 0;
+}
+
+.title {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.contact-links {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f5f3;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-item:hover {
+  background: #f0ece8;
+  transform: translateY(-2px);
+}
+
+.contact-item strong {
+  color: #776b5d;
+}
+
+.copy-text {
+  color: #9c8b7a;
+  font-weight: 500;
+}
+
+.copy-notice {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #776b5d;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.contact-item.copied .copy-notice {
+  opacity: 1;
+  right: 10px;
+}
+
+.contact-links a {
+  color: #9c8b7a;
+  text-decoration: none;
+}
+
+.contact-links a:hover {
+  text-decoration: underline;
+}
+
+.resume-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.8rem;
+  background: #9c8b7a;
+  color: white !important;           /* 強制白色 */
+  text-decoration: none !important;  /* 移除底線 */
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s;
+  font-family: "Noto Sans TC", sans-serif; /* 確保中文字體 */
+}
+
+.resume-btn:hover {
+  background: #776b5d;
+  transform: translateY(-2px);
+  color: white !important;           /* hover 也強制白色 */
+}
+
+.qr-code {
+  margin-top: 1rem;
+}
+
+.qr-code img {
+  width: 100px;
+  height: 100px;
+  border: 8px solid white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.qr-code p {
+  margin-top: 0.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .profile-img img { width: 100px; height: 100px; }
+  .profile-details h3 { font-size: 1.5rem; }
+  .contact-item { flex-direction: column; text-align: center; gap: 0.3rem; }
+}
   </style>
 </head>
 <body>
@@ -649,6 +894,7 @@
     <a href="#about">About Me</a>
     <a href="#portfolio">portfolio</a>
     <a href="#certificates">certificates</a>
+	<a href="#Core Competencies">Core Competencies</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -673,7 +919,7 @@
     <!-- 左邊圖片 + 名字 -->
     <div class="about-image">
       <img src="images/hilda.png" alt="Chen Wun-Yan">
-      <p class="my-name">陳玟諺</p><p>Chen Wun-Yan</p><p>Hilda</p>
+      <p class="my-name">陳玟諺</p><p class="en-name">Chen Wun-Yan</p><p class="en-name">Hilda</p>
     </div>
 
     <!-- 右邊文字 -->
@@ -903,33 +1149,220 @@
     </div>
   </div>
 </section>
-  <section id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>🌐 Personal Website</h3>
-        <p>A responsive, interactive portfolio built with HTML and CSS.</p>
+  <section id="Core Competencies">
+  <h2>在校核心能力指標</h2>
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <div class="skills-container">
+    
+    <!-- 雷達圖 -->
+    <div class="skill-chart">
+      <canvas id="schoolSkillsRadar"></canvas>
+    </div>
+    
+    <!-- 長條圖 -->
+    <div class="skill-bars">
+      <div class="skill-bar">
+        <span class="skill-label">專案管理</span>
+        <div class="skill-progress">
+          <div class="progress-fill" data-width="92"></div>
+        </div>
+        <span class="skill-score">92%</span>
       </div>
-      <div class="project-card">
-        <h3>☁️ AWS Data Project</h3>
-        <p>Data integration system using AWS Glue and S3.</p>
+      
+      <div class="skill-bar">
+        <span class="skill-label">團隊合作</span>
+        <div class="skill-progress">
+          <div class="progress-fill" data-width="88"></div>
+        </div>
+        <span class="skill-score">88%</span>
       </div>
-      <div class="project-card">
-        <h3>📊 ERP Database Design</h3>
-        <p>Designed a cloud-based ERP database for business management.</p>
+      
+      <div class="skill-bar">
+        <span class="skill-label">問題解決</span>
+        <div class="skill-progress">
+          <div class="progress-fill" data-width="95"></div>
+        </div>
+        <span class="skill-score">95%</span>
+      </div>
+      
+      <div class="skill-bar">
+        <span class="skill-label">時間管理</span>
+        <div class="skill-progress">
+          <div class="progress-fill" data-width="90"></div>
+        </div>
+        <span class="skill-score">90%</span>
       </div>
     </div>
-  </section>
+    
+  </div>
 
-  <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+  <!-- 專業核心能力指標 -->
+  <h2 class="pro-title">專業核心能力指標</h2>
+  
+  <div class="skills-container">
+    
+    <!-- 雷達圖 -->
+    <div class="skill-chart">
+      <canvas id="proSkillsRadar"></canvas>
+    </div>
+    
+    <!-- 長條圖 -->
+    <div class="skill-bars">
+      <div class="skill-bar">
+        <span class="skill-label">雲端架構</span>
+        <div class="skill-progress">
+          <div class="progress-fill pro" data-width="88"></div>
+        </div>
+        <span class="skill-score">88%</span>
+      </div>
+      
+      <div class="skill-bar">
+        <span class="skill-label">資料分析</span>
+        <div class="skill-progress">
+          <div class="progress-fill pro" data-width="92"></div>
+        </div>
+        <span class="skill-score">92%</span>
+      </div>
+      
+      <div class="skill-bar">
+        <span class="skill-label">前端開發</span>
+        <div class="skill-progress">
+          <div class="progress-fill pro" data-width="85"></div>
+        </div>
+        <span class="skill-score">85%</span>
+      </div>
+      
+      <div class="skill-bar">
+        <span class="skill-label">ERP 系統</span>
+        <div class="skill-progress">
+          <div class="progress-fill pro" data-width="78"></div>
+        </div>
+        <span class="skill-score">78%</span>
+      </div>
+    </div>
+	<script>
+// 在校核心能力雷達圖
+const schoolCtx = document.getElementById('schoolSkillsRadar').getContext('2d');
+new Chart(schoolCtx, {
+  type: 'radar',
+  data: {
+    labels: ['專案管理', '團隊合作', '問題解決', '時間管理', '溝通表達'],
+    datasets: [{
+      label: '在校表現',
+      data: [92, 88, 95, 90, 87],
+      backgroundColor: 'rgba(156, 139, 122, 0.15)',
+      borderColor: '#9c8b7a',
+      borderWidth: 3,
+      pointBackgroundColor: '#776b5d',
+      pointBorderColor: '#fff',
+      pointBorderWidth: 2,
+      pointRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      r: {
+        angleLines: { color: '#e4ddd6' },
+        grid: { color: '#e4ddd6' },
+        pointLabels: { color: '#776b5d', font: { size: 12 } },
+        ticks: { color: '#9c8b7a', backdropColor: 'transparent' }
+      }
+    },
+    plugins: { legend: { display: false } }
+  }
+});
+
+// 專業核心能力雷達圖
+const proCtx = document.getElementById('proSkillsRadar').getContext('2d');
+new Chart(proCtx, {
+  type: 'radar',
+  data: {
+    labels: ['雲端架構', '資料分析', '前端開發', 'ERP系統', 'AI應用'],
+    datasets: [{
+      label: '專業能力',
+      data: [88, 92, 85, 78, 82],
+      backgroundColor: 'rgba(119, 107, 93, 0.2)',
+      borderColor: '#776b5d',
+      borderWidth: 3,
+      pointBackgroundColor: '#9c8b7a',
+      pointBorderColor: '#fff',
+      pointBorderWidth: 2,
+      pointRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      r: {
+        angleLines: { color: '#e4ddd6' },
+        grid: { color: '#e4ddd6' },
+        pointLabels: { color: '#9c8b7a', font: { size: 12 } },
+        ticks: { color: '#776b5d', backdropColor: 'transparent' }
+      }
+    },
+    plugins: { legend: { display: false } }
+  }
+});
+
+// 動畫長條圖
+document.addEventListener('DOMContentLoaded', () => {
+  const fills = document.querySelectorAll('.progress-fill');
+  fills.forEach(fill => {
+    const width = fill.getAttribute('data-width');
+    setTimeout(() => {
+      fill.style.width = width + '%';
+    }, 500);
+  });
+});
+</script>
+    
+  </div>
+</section>
+
+  <section id="contact" class="contact-info">
+  <h2>聯絡資訊</h2>
+  <div class="profile-card">
+
+    <!-- 姓名與標題 -->
+    <div class="profile-details">
+      <h3>陳玟諺</h3>
+      <p class="en-name">Chen Wun-Yan</p>
+	   <p class="en-name">Hilda</p>
+      <p class="title">實踐大學 | 資訊科技與管理學系 學士</p>
+    </div>
+
+    <!-- 聯絡方式 -->
+    <div class="contact-links">
+      <div class="contact-item" data-copy="hildachen01@gmail.com">
+        <strong>Email:</strong> 
+        <span class="copy-text">hildachen01@gmail.com</span>
+        <span class="copy-notice">已複製！</span>
+      </div>
+
+      <!-- 履歷下載 -->
+      <a href="resume/Hilda_Resume.pdf" download class="resume-btn" target="_blank" >
+        下載一頁式履歷 (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+<script>
+  document.querySelectorAll('.contact-item[data-copy]').forEach(item => {
+    item.addEventListener('click', () => {
+      const text = item.getAttribute('data-copy');
+      navigator.clipboard.writeText(text).then(() => {
+        item.classList.add('copied');
+        setTimeout(() => item.classList.remove('copied'), 2000);
+      });
+    });
+  });
+</script>
 
   <footer>
     <p>© 2025 by Chen Wun-Yan. All Rights Reserved.</p>
