@@ -389,43 +389,45 @@
 	  }
 	}
 	
-	/* === 作品集翻牌效果 === */
+	/* === 作品集網格 === */
 	.projects-grid {
 	  display: grid;
 	  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 	  gap: 2rem;
 	  padding: 1rem;
+	  max-width: 1200px;
+	  margin: 0 auto;
 	}
 
+	/* === 翻牌卡片 === */
 	.flip-card {
-	  background-color: transparent;
-	  width: 100%;
-	  height: 300px;
+	  background: transparent;
+	  height: 320px;
 	  perspective: 1000px;
+	  border-radius: 15px;
+	  overflow: hidden;
+	  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 	}
 
 	.flip-card-inner {
 	  position: relative;
 	  width: 100%;
 	  height: 100%;
-	  text-align: center;
-	  transition: transform 0.6s;
+	  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 	  transform-style: preserve-3d;
-	  border-radius: 15px;
-	  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 	}
 
 	.flip-card:hover .flip-card-inner {
 	  transform: rotateY(180deg);
 	}
 
+	/* 正面 */
 	.flip-card-front, .flip-card-back {
 	  position: absolute;
 	  width: 100%;
 	  height: 100%;
 	  backface-visibility: hidden;
 	  border-radius: 15px;
-	  overflow: hidden;
 	  display: flex;
 	  flex-direction: column;
 	  justify-content: center;
@@ -442,25 +444,68 @@
 	  object-fit: cover;
 	}
 
+	/* 圖片上的標題遮罩 */
+	.card-overlay {
+	  position: absolute;
+	  bottom: 0;
+	  left: 0;
+	  right: 0;
+	  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+	  color: white;
+	  padding: 1.5rem 1rem 1rem;
+	  text-align: center;
+	  transition: 0.3s;
+	}
+
+	.overlay-title {
+	  font-weight: 600;
+	  font-size: 1.1rem;
+	  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	}
+
+	/* 背面 */
 	.flip-card-back {
 	  background: linear-gradient(135deg, #9c8b7a, #776b5d);
 	  color: white;
 	  transform: rotateY(180deg);
 	  padding: 1.5rem;
+	  text-align: center;
 	}
 
 	.flip-card-back h3 {
 	  margin-bottom: 0.8rem;
-	  font-size: 1.3rem;
+	  font-size: 1.25rem;
 	}
 
 	.flip-card-back p {
-	  font-size: 0.95rem;
+	  font-size: 0.9rem;
 	  margin-bottom: 1rem;
-	  opacity: 0.9;
+	  opacity: 0.95;
+	  line-height: 1.5;
 	}
 
+	/* 技術標籤 */
+	.tech-tags {
+	  display: flex;
+	  gap: 0.5rem;
+	  flex-wrap: wrap;
+	  justify-content: center;
+	  margin: 0.8rem 0;
+	}
+
+	.tech-tags span {
+	  background: rgba(255,255,255,0.2);
+	  color: white;
+	  font-size: 0.7rem;
+	  padding: 0.25rem 0.6rem;
+	  border-radius: 4px;
+	  font-weight: 600;
+	  backdrop-filter: blur(2px);
+	}
+
+	/* Read More 按鈕 */
 	.project-btn {
+	  margin-top: auto;
 	  background: white;
 	  color: #776b5d;
 	  padding: 0.6rem 1.2rem;
@@ -475,15 +520,135 @@
 	  background: #f0ece8;
 	  transform: scale(1.05);
 	}
+
+	/* RWD 優化 */
+	@media (max-width: 768px) {
+	  .flip-card { height: 280px; }
+	  .flip-card-back h3 { font-size: 1.1rem; }
+	  .tech-tags span { font-size: 0.65rem; }
+	}
+		
+	/* === 證照輪播 === */
+	.certificates {
+	  max-width: 1000px;
+	  margin: 4rem auto;
+	  padding: 2rem;
+	  background: white;
+	  border-radius: 15px;
+	  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+	  overflow: hidden;
+	}
+
+	.certificates h2 {
+	  text-align: center;
+	  color: #776b5d;
+	  margin-bottom: 2rem;
+	}
+
+	.carousel-container {
+	  position: relative;
+	  width: 100%;
+	  overflow: hidden;
+	}
+
+	.carousel-track-container {
+	  overflow: hidden;
+	  border-radius: 12px;
+	}
+
+	.carousel-track {
+	  display: flex;
+	  transition: transform 0.5s ease-in-out;
+	}
+
+	.carousel-slide {
+	  min-width: 200px;
+	  padding: 1rem;
+	  text-align: center;
+	  background: #f8f5f3;
+	  border-radius: 12px;
+	  marginaradius: 12px;
+	  margin: 0 0.5rem;
+	  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+	  transition: transform 0.3s ease;
+	}
+
+	.carousel-slide:hover {
+	  transform: scale(1.05);
+	  z-index: 10;
+	}
+
+	.carousel-slide img {
+	  width: 100%;
+	  height: 140px;
+	  object-fit: contain;
+	  border-radius: 8px;
+	  background: white;
+	  padding: 10px;
+	  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+	}
+
+	.carousel-slide p {
+	  margin-top: 0.8rem;
+	  font-size: 0.9rem;
+	  color: #555;
+	  line-height: 1.4;
+	}
+
+	.carousel-slide p strong {
+	  color: #776b5d;
+	  font-size: 1rem;
+	}
+
+	/* 按鈕 */
+	.carousel-btn {
+	  position: absolute;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  background: rgba(156, 139, 122, 0.8);
+	  color: white;
+	  border: none;
+	  width: 40px;
+	  height: 40px;
+	  border-radius: 50%;
+	  font-size: 1.5rem;
+	  cursor: pointer;
+	  z-index: 10;
+	  transition: 0.3s;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	}
+
+	.carousel-btn:hover {
+	  background: #9c8b7a;
+	  transform: translateY(-50%) scale(1.1);
+	}
+
+	.prev-btn { left: 10px; }
+	.next-btn { right: 10px; }
+
+	/* RWD */
+	@media (max-width: 768px) {
+	  .carousel-slide {
+		min-width: 160px;
+	  }
+	  .carousel-btn {
+		width: 35px;
+		height: 35px;
+		font-size: 1.2rem;
+	  }
+	}	
 		
   </style>
 </head>
 <body>
 
+
   <nav>
     <a href="#about">About Me</a>
-    <a href="#resume">Resume</a>
-    <a href="#portfolio">Portfolio</a>
+    <a href="#portfolio">portfolio</a>
+    <a href="#certificates">certificates</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -523,47 +688,296 @@
 </section>
 
 	<section id="portfolio">
+	<div class="about-text" >
+	  <p class="en-subtitle">portfolio</p>
 	  <h2>作品集</h2>
+	</div>
 	  <div class="projects-grid">
-		
-		<!-- 作品 1 -->
+
+		<!-- 作品 1：個人網站 -->
 		<div class="flip-card">
 		  <div class="flip-card-inner">
 			<div class="flip-card-front">
-			  <img src="images/project1.jpg" alt="作品1">
+			  <img src="images/作品集/project_company.png" alt="個人作品網站">
+			  <div class="card-overlay">
+				<p class="overlay-title">企業作品網站</p>
+			  </div>
 			</div>
 			<div class="flip-card-back">
 			  <h3>個人作品網站</h3>
-			  <p>響應式設計、動態載入、SEO 優化</p>
-			  <a href="project1.html" class="project-btn">Read More</a>
+			  <p>響應式設計、動態互動、SEO 優化</p>
+			  <div class="tech-tags">
+				<span>HTML</span><span>CSS</span><span>JavaScript</span>
+			  </div>
+			  <a href="project_personal.html" class="project-btn">Read More</a>
 			</div>
 		  </div>
 		</div>
 
-		<!-- 作品 2 -->
+		<!-- 作品 2：AWS 英文學習平台 -->
 		<div class="flip-card">
 		  <div class="flip-card-inner">
 			<div class="flip-card-front">
-			  <img src="images/project2.jpg" alt="作品2">
+			  <img src="images/作品集/project_aws_english.png" alt="AWS 英文學習平台">
+			  <div class="card-overlay">
+				<p class="overlay-title">AWS 英文學習平台</p>
+			  </div>
 			</div>
 			<div class="flip-card-back">
-			  <h3>AWS 資料管線</h3>
-			  <p>S3 + Glue + Athena 建置 ETL 流程</p>
-			  <a href="project2.html" class="project-btn">Read More</a>
+			  <h3>AWS 英文學習平台</h3>
+			  <p>HTML/CSS + RDS + EC2 + S3 靜態資源</p>
+			  <div class="tech-tags">
+				<span>AWS</span><span>EC2</span><span>RDS</span><span>S3</span>
+			  </div>
+			  <a href="project_aws_english.html" class="project-btn">Read More</a>
 			</div>
 		  </div>
 		</div>
 
-		<!-- 更多作品... -->
+		<!-- 作品 3：AWS 身分驗證系統 -->
+		<div class="flip-card">
+		  <div class="flip-card-inner">
+			<div class="flip-card-front">
+			  <img src="images/作品集/project_auth.png" alt="身分驗證系統">
+			  <div class="card-overlay">
+				<p class="overlay-title">身分驗證系統</p>
+			  </div>
+			</div>
+			<div class="flip-card-back">
+			  <h3>身分驗證系統</h3>
+			  <p>PHP 登入 + EC2 + RDS 安全儲存</p>
+			  <div class="tech-tags">
+				<span>PHP</span><span>AWS</span><span>RDS</span>
+			  </div>
+			  <a href="project_auth.html" class="project-btn">Read More</a>
+			</div>
+		  </div>
+		</div>
+
+		<!-- 作品 4：AR 捷運導航 -->
+		<div class="flip-card">
+		  <div class="flip-card-inner">
+			<div class="flip-card-front">
+			  <img src="images/作品集/project_ar.png" alt="AR 捷運導航">
+			  <div class="card-overlay">
+				<p class="overlay-title">AR 捷運室內導航</p>
+			  </div>
+			</div>
+			<div class="flip-card-back">
+			  <h3>AR 捷運室內導航</h3>
+			  <p>Immersal SDK + Android Studio + EC2 API</p>
+			  <div class="tech-tags">
+				<span>AR</span><span>Android</span><span>AWS</span>
+			  </div>
+			  <a href="project_ar.html" class="project-btn">Read More</a>
+			</div>
+		  </div>
+		</div>
+
+		<!-- 作品 5：SAP ESG 分析 -->
+		<div class="flip-card">
+		  <div class="flip-card-inner">
+			<div class="flip-card-front">
+			  <img src="images/作品集/project_sap.png" alt="SAP ESG 分析">
+			  <div class="card-overlay">
+				<p class="overlay-title">SAP ESG 分析</p>
+			  </div>
+			</div>
+			<div class="flip-card-back">
+			  <h3>SAP ESG 分析</h3>
+			  <p>S/4HANA + ABAP + Power BI 儀表板</p>
+			  <div class="tech-tags">
+				<span>SAP</span><span>ABAP</span><span>Power BI</span>
+			  </div>
+			  <a href="project_sap.html" class="project-btn">Read More</a>
+			</div>
+		  </div>
+		</div>
+		
+		<!-- 作品 6：高速公路 Open Data 分析 -->
+		<div class="flip-card">
+		  <div class="flip-card-inner">
+			<div class="flip-card-front">
+			  <img src="images/作品集/project_opendata.png" alt="高速公路事故分析">
+			  <div class="card-overlay">
+				<p class="overlay-title">高速公路事故分析</p>
+			  </div>
+			</div>
+			<div class="flip-card-back">
+			  <h3>高速公路事故與動物致死分析</h3>
+			  <p>政府 Open Data 串接、Excel 資料清理、Power BI 互動報表</p>
+			  <div class="tech-tags">
+				<span>Open Data</span><span>Excel</span><span>Power BI</span>
+			  </div>
+			  <a href="project_opendata.html" class="project-btn">Read More</a>
+			</div>
+		  </div>
+		</div>
+
+		<!-- 作品 7：追星記帳自動化系統 -->
+		<div class="flip-card">
+		  <div class="flip-card-inner">
+			<div class="flip-card-front">
+			  <img src="images/作品集/project_fanapp.png" alt="追星記帳系統">
+			  <div class="card-overlay">
+				<p class="overlay-title">追星記帳自動化</p>
+			  </div>
+			</div>
+			<div class="flip-card-back">
+			  <h3>追星記帳自動化系統</h3>
+			  <p>Google Forms 收集 + AppSheet 無碼應用 + Excel 自動報表</p>
+			  <div class="tech-tags">
+				<span>Google Forms</span><span>AppSheet</span><span>Excel</span>
+			  </div>
+			  <a href="project_fanapp.html" class="project-btn">Read More</a>
+			</div>
+		  </div>
+		</div>
+		
+		<!-- 作品 8：Jetson Nano 人工智慧入門 -->
+		<div class="flip-card">
+		  <div class="flip-card-inner">
+			<div class="flip-card-front">
+			  <img src="images/作品集/project_Jetson Nano.png" alt="追星記帳系統">
+			  <div class="card-overlay">
+				<p class="overlay-title">追星記帳自動化</p>
+			  </div>
+			</div>
+			<div class="flip-card-back">
+			  <h3>追星記帳自動化系統</h3>
+			  <p>Google Forms 收集 + AppSheet 無碼應用 + Excel 自動報表</p>
+			  <div class="tech-tags">
+				<span>Google Forms</span><span>AppSheet</span><span>Excel</span>
+			  </div>
+			  <a href="project_fanapp.html" class="project-btn">Read More</a>
+			</div>
+		  </div>
+		</div>
+
 	  </div>
 	</section>
 
-  <section id="resume">
-    <h2>Resume</h2>
-    <p>🎓 <strong>Education:</strong> Bachelor’s in Information Management (Ongoing)</p>
-    <p>💻 <strong>Skills:</strong> HTML, CSS, JavaScript, MySQL, AWS Cloud</p>
-    <p>📘 <strong>Interests:</strong> UI/UX Design, Data Visualization, Cloud Systems</p>
-  </section>
+  <section id="certificates" class="certificates">
+  <h2>證照與認證</h2>
+  <div class="carousel-container">
+    
+    <!-- 左右按鈕 -->
+    <button class="carousel-btn prev-btn" aria-label="上一張">❮</button>
+    <button class="carousel-btn next-btn" aria-label="下一張">❯</button>
+
+    <!-- 輪播內容 -->
+    <div class="carousel-track-container">
+      <div class="carousel-track">
+
+        <!-- 證照 1 -->
+        <div class="carousel-slide">
+          <img src="images/證照/透過 Jetson Nano 開發人工智慧應用_ NVIDIA.png" alt="AWS Certified Cloud Practitioner">
+          <p>NVIDIA<br><strong>透過 Jetson Nano 開發人工智慧應用</strong><br>2025.09.21</p>
+        </div>
+
+        <!-- 證照 2 -->
+        <div class="carousel-slide">
+          <img src="images/證照/Microsoft Certified Azure AI Fundamentals(Ai-900).png" alt="Google Data Analytics">
+          <p>Microsoft<br><strong>Ai-900</strong><br>2024.05.13</p>
+        </div>
+
+        <!-- 證照 3 -->
+        <div class="carousel-slide">
+          <img src="images/證照/Network Security.png" alt="Azure Fundamentals">
+          <p>Pearson VUE/Certiport<br><strong>Pearson VUE ITS 資訊科技專家 國際專業認證 Network Security 網路安全管理核心能力</strong><br>2024.12.07</p>
+        </div>
+
+        <!-- 證照 4 -->
+        <div class="carousel-slide">
+          <img src="images/證照/供應鏈管理專業證照.png" alt="SAP Certified">
+          <p>中華民國物流協會<br><strong>供應鏈管理專業認證-營運管理師</strong><br>2025.06.23</p>
+        </div>
+
+        <!-- 證照 5 -->
+        <div class="carousel-slide">
+          <img src="images/證照/餐飲資訊系統基礎檢定證書.png" alt="TOEIC 850">
+          <p>中央大學ERPS<br><strong>餐飲資訊系統基礎檢定考試 Fundamentals of Restaurant Management System</strong><br>2024.06</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+	<script>
+	  const track = document.querySelector('.carousel-track');
+	  const slides = Array.from(track.children);
+	  const nextButton = document.querySelector('.next-btn');
+	  const prevButton = document.querySelector('.prev-btn');
+	  const slideWidth = slides[0].getBoundingClientRect().width + 16; // 包含 margin
+
+	  let currentIndex = 0;
+	  let autoPlay;
+
+	  // 排列幻燈片
+	  const arrangeSlides = () => {
+		slides.forEach((slide, index) => {
+		  slide.style.left = `${index * slideWidth}px`;
+		});
+	  };
+
+	  // 移動
+	  const moveToSlide = (index) => {
+		track.style.transform = `translateX(-${index * slideWidth}px)`;
+		currentIndex = index;
+	  };
+
+	  // 下一張
+	  const nextSlide = () => {
+		if (currentIndex >= slides.length - 1) {
+		  currentIndex = 0;
+		} else {
+		  currentIndex++;
+		}
+		moveToSlide(currentIndex);
+	  };
+
+	  // 上一張
+	  const prevSlide = () => {
+		if (currentIndex <= 0) {
+		  currentIndex = slides.length - 1;
+		} else {
+		  currentIndex--;
+		}
+		moveToSlide(currentIndex);
+	  };
+
+	  // 自動播放
+	  const startAutoPlay = () => {
+		autoPlay = setInterval(nextSlide, 3000); // 每 3 秒
+	  };
+
+	  const stopAutoPlay = () => {
+		clearInterval(autoPlay);
+	  };
+
+	  // 事件
+	  nextButton.addEventListener('click', () => {
+		nextSlide();
+		stopAutoPlay();
+		startAutoPlay(); // 重啟計時
+	  });
+
+	  prevButton.addEventListener('click', () => {
+		prevSlide();
+		stopAutoPlay();
+		startAutoPlay();
+	  });
+
+	  // 滑鼠移入整個區塊 → 暫停
+	  document.querySelector('.carousel-container').addEventListener('mouseenter', stopAutoPlay);
+	  document.querySelector('.carousel-container').addEventListener('mouseleave', startAutoPlay);
+
+	  // 初始化
+	  arrangeSlides();
+	  startAutoPlay();
+	</script>
 
   <section id="portfolio">
     <h2>Portfolio</h2>
