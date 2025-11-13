@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>個人網站 | Your Name</title>
+  <meta name="description" content="個人作品集與聯絡頁面">
+  <link rel="icon" href="data:,"><!-- 可替換成實際favicon -->
+  <style>
+    :root{--accent:#0066cc;--bg:#0f1720;--card:#0b1220;--muted:#9aa6b2;--glass: rgba(255,255,255,0.04)}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family: -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg,#071021 0%, #0b1220 100%);color:#e6eef6}
+    .container{max-width:1000px;margin:40px auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .avatar{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#00aaff);display:flex;align-items:center;justify-content:center;font-weight:700;color:#012;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+    nav a{color:var(--muted);text-decoration:none;margin-left:12px}
+    nav a:hover{color:var(--accent)}
+    .hero{display:grid;grid-template-columns:1fr 320px;gap:24px;margin-top:28px;align-items:center}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:20px;box-shadow:0 6px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    h1{margin:0;font-size:28px}
+    p.lead{color:var(--muted);margin-top:8px}
+    .cta{margin-top:16px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-ghost{border:1px solid rgba(255,255,255,0.06);color:var(--muted);background:transparent}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .chip{padding:6px 10px;border-radius:999px;background:var(--glass);color:var(--muted);font-size:13px}
+    .profile-card{display:flex;flex-direction:column;gap:12px}
+    .stats{display:flex;gap:12px}
+    .stat{flex:1;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));padding:10px;border-radius:8px;text-align:center}
+
+    section{margin-top:28px}
+    .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+    .project-title{font-size:16px;margin:0}
+    footer{margin-top:40px;color:var(--muted);text-align:center;font-size:14px;padding-bottom:40px}
+
+    /* responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr}
+      .avatar{width:48px;height:48px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="avatar">CW</div>
+        <div>
+          <div style="font-weight:700"></div>
+          <div style="font-size:13px;color:var(--muted)">資訊管理系 • 前端開發 & 數據分析</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">關於</a>
+        <a href="#projects">作品</a>
+        <a href="#contact">聯絡</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card">
+          <h1>嗨，我是陳文彥 — 我做簡潔、實用的網頁與資料分析</h1>
+          <p class="lead">目前是資訊管理系三年級學生，熱衷於前端開發、資料庫設計與雲端服務。這個網站示範我的作品、技能與聯絡方式。</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#projects">查看作品</a>
+            <a class="btn btn-ghost" href="#contact" style="margin-left:8px">聯絡我</a>
+          </div>
+
+          <div class="skills">
+            <div class="chip">HTML</div>
+            <div class="chip">CSS</div>
+            <div class="chip">JavaScript</div>
+            <div class="chip">MySQL</div>
+            <div class="chip">AWS</div>
+            <div class="chip">Android(Java)</div>
+          </div>
+        </div>
+
+        <aside class="card profile-card">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#e6f7ff,#cceeff);display:flex;align-items:center;justify-content:center;color:#012;font-weight:700">CW</div>
+            <div>
+              <div style="font-weight:700">陳文彥</div>
+              <div style="font-size:13px;color:var(--muted)">臺灣 • 資訊管理系</div>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat"><div style="font-weight:700">12</div><div style="font-size:12px;color:var(--muted)">專案</div></div>
+            <div class="stat"><div style="font-weight:700">3</div><div style="font-size:12px;color:var(--muted)">實習</div></div>
+          </div>
+          <div style="font-size:13px;color:var(--muted)">喜歡把複雜問題拆成小步驟，熱愛學習新技術與實作。</div>
+        </aside>
+      </section>
+
+      <section id="about" class="card">
+        <h2>關於我</h2>
+        <p style="color:var(--muted)">我會使用 HTML/CSS/JavaScript 建置互動式網頁，熟悉 MySQL 資料庫設計，並使用 AWS 進行雲端部署與資料處理。在校曾參與跨領域專案與團隊合作。</p>
+      </section>
+
+      <section id="projects">
+        <h2 style="margin-bottom:12px">作品集</h2>
+        <div class="projects">
+          <article class="card">
+            <h3 class="project-title">Android BMI App</h3>
+            <p class="lead" style="font-size:13px;color:var(--muted)">使用 Java 製作，整合 LMS 標準化 BMI-for-age，包含 JSON 參考資料與百分位分類。</p>
+            <p style="margin-top:8px"><a class="btn btn-ghost" href="#">查看專案</a></p>
+          </article>
+
+          <article class="card">
+            <h3 class="project-title">ATV 產品分析報表</h3>
+            <p class="lead" style="font-size:13px;color:var(--muted)">以銷售數據與成本分析為主，包含碳足跡與 ABC 成本分析。</p>
+            <p style="margin-top:8px"><a class="btn btn-ghost" href="#">查看專案</a></p>
+          </article>
+
+          <article class="card">
+            <h3 class="project-title">個人作品網頁範本</h3>
+            <p class="lead" style="font-size:13px;color:var(--muted)">這個單頁範本（Single Page）示範頁面設計與響應式排版。</p>
+            <p style="margin-top:8px"><a class="btn btn-ghost" href="#">查看專案</a></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="card">
+        <h2>聯絡我</h2>
+        <p style="color:var(--muted)">有合作或問題歡迎透過下列方式聯繫：</p>
+        <form onsubmit="submitForm(event)">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <input id="name" placeholder="姓名" required style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+            <input id="email" type="email" placeholder="電子郵件" required style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+          </div>
+          <textarea id="message" placeholder="訊息" required style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;min-height:120px"></textarea>
+          <div style="margin-top:10px">
+            <button class="btn btn-primary" type="submit">發送訊息</button>
+            <button class="btn btn-ghost" type="button" onclick="window.location='mailto:youremail@example.com'" style="margin-left:8px">用 Email 聯絡</button>
+          </div>
+        </form>
+        <script>
+          function submitForm(e){
+            e.preventDefault();
+            const n=document.getElementById('name').value.trim();
+            const em=document.getElementById('email').value.trim();
+            const msg=document.getElementById('message').value.trim();
+            if(!n||!em||!msg){alert('請完整填寫表單');return}
+            // 簡單示範：使用 mailto 開啟使用者預設信件客戶端
+            const subject=encodeURIComponent('來自網站的訊息：'+n);
+            const body=encodeURIComponent(msg+'\n\n—\n聯絡信箱：'+em);
+            window.location.href = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
+          }
+        </script>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span>
+    </footer>
+  </div>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
