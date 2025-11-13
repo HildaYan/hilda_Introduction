@@ -838,7 +838,7 @@
 		<div class="flip-card">
 		  <div class="flip-card-inner">
 			<div class="flip-card-front">
-			  <img src="images/作品集/project_Jetson Nano.png" alt="追星記帳系統">
+			  <img src="images/作品集/Jetson Nano.png" alt="Jetson Nano 人工智慧入門">
 			  <div class="card-overlay">
 				<p class="overlay-title">追星記帳自動化</p>
 			  </div>
@@ -903,9 +903,49 @@
     </div>
   </div>
 </section>
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>🌐 Personal Website</h3>
+        <p>A responsive, interactive portfolio built with HTML and CSS.</p>
+      </div>
+      <div class="project-card">
+        <h3>☁️ AWS Data Project</h3>
+        <p>Data integration system using AWS Glue and S3.</p>
+      </div>
+      <div class="project-card">
+        <h3>📊 ERP Database Design</h3>
+        <p>Designed a cloud-based ERP database for business management.</p>
+      </div>
+    </div>
+  </section>
 
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
-	<script>
+  <footer>
+    <p>© 2025 by Chen Wun-Yan. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    /* === 滾動動畫 === */
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          sec.classList.add("visible");
+        }
+      });
+    });
 	  const track = document.querySelector('.carousel-track');
 	  const slides = Array.from(track.children);
 	  const nextButton = document.querySelector('.next-btn');
@@ -979,50 +1019,6 @@
 	  startAutoPlay();
 	</script>
 
-  <section id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>🌐 Personal Website</h3>
-        <p>A responsive, interactive portfolio built with HTML and CSS.</p>
-      </div>
-      <div class="project-card">
-        <h3>☁️ AWS Data Project</h3>
-        <p>Data integration system using AWS Glue and S3.</p>
-      </div>
-      <div class="project-card">
-        <h3>📊 ERP Database Design</h3>
-        <p>Designed a cloud-based ERP database for business management.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>© 2025 by Chen Wun-Yan. All Rights Reserved.</p>
-  </footer>
-
-  <script>
-    /* === 滾動動畫 === */
-    const sections = document.querySelectorAll("section");
-    window.addEventListener("scroll", () => {
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          sec.classList.add("visible");
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>
