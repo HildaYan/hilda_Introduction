@@ -3,199 +3,217 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>關於我 - Chen Wun-Yan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>AR 捷運室內導航系統 | 陳妤燕 Hilda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
   <style>
+    /* 沿用相同結構，改色為科技藍 */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Poppins", "Noto Sans TC", sans-serif;
-      background-color: #f3f1ef;
-      color: #444;
-      line-height: 1.8;
-    }
-    .container {
-      max-width: 900px;
-      margin: 4rem auto;
-      padding: 2.5rem;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      color: #776b5d;
-      margin-bottom: 2.5rem;
-      font-size: 2.5rem;
-      position: relative;
-    }
-    h1::after {
-      content: '';
-      width: 60px;
-      height: 3px;
-      background: #9c8b7a;
-      display: block;
-      margin: 1rem auto 0;
-    }
-    h2 {
-      color: #9c8b7a;
-      margin: 2rem 0 1rem;
-      font-size: 1.5rem;
-      border-left: 4px solid #9c8b7a;
-      padding-left: 1rem;
-    }
-    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
-    li { margin-bottom: 0.5rem; }
-    .back-link {
-      display: block;
-      text-align: center;
-      margin-top: 3rem;
-      color: #9c8b7a;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    .back-link:hover { color: #b7a99b; }
-    .resume-btn {
-      display: inline-block;
-      margin: 1.5rem 0;
-      padding: 0.8rem 2rem;
-      background: #9c8b7a;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-    }
-    .resume-btn:hover { background: #b7a99b; }
-	/* === 履歷預覽圖 + 按鈕 === */
-	.resume-preview {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  gap: 1.5rem;
-	  margin: 1.5rem 0;
-	}
-
-	.resume-image-link {
-	  display: block;
-	  width: 100%;
-	  max-width: 500px;
-	  border-radius: 12px;
-	  overflow: hidden;
-	  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-	  transition: transform 0.3s ease, box-shadow 0.3s ease;
-	}
-
-	.resume-image-link:hover {
-	  transform: translateY(-5px);
-	  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
-	}
-
-	.resume-preview-img {
-	  width: 100%;
-	  height: auto;
-	  display: block;
-	  border-radius: 12px;
-	  transition: transform 0.4s ease;
-	}
-
-	.resume-image-link:hover .resume-preview-img {
-	  transform: scale(1.02);
-	}
-
-	/* 下載按鈕（改文字 + 圖標） */
-	.resume-btn {
-	  display: inline-flex;
-	  align-items: center;
-	  gap: 0.5rem;
-	  padding: 0.9rem 2rem;
-	  background: #9c8b7a;
-	  color: white;
-	  text-decoration: none;
-	  border-radius: 8px;
-	  font-weight: 600;
-	  font-size: 1.1rem;
-	  transition: all 0.3s ease;
-	  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-	}
-
-	.resume-btn:hover {
-	  background: #b7a99b;
-	  transform: translateY(-2px);
-	  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-	}
-
-	.resume-btn::after {
-	  content: "↓";
-	  font-size: 1.2rem;
-	}
+    body { font-family: "Noto Sans TC", "Poppins", sans-serif; background: #f3f1ef; color: #444; line-height: 1.8; }
+    .container { max-width: 1100px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 18px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    .header { text-align: center; margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 2px solid #e4ddd6; }
+    .header h1 { font-size: 2.2rem; color: #1a3c8a; margin-bottom: 0.5rem; }
+    .header p { color: #2b6cb0; font-size: 1.1rem; font-weight: 600; }
+    .content { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+    .text-section h2 { color: #2b6cb0; margin: 1.5rem 0 1rem; font-size: 1.3rem; position: relative; padding-left: 1rem; }
+    .text-section h2::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 5px; height: 20px; background: #2b6cb0; border-radius: 3px; }
+    .text-section p, .text-section li { margin-bottom: 0.6rem; text-align: justify; font-size: 1rem; }
+    .text-section ul { margin: 1rem 0; padding-left: 1.5rem; }
+    .text-section li::marker { color: #2b6cb0; }
+    .video-section { position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.15); background: #000; }
+    .video-wrapper { position: relative; width: 100%; cursor: pointer; }
+    .project-video { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 15px; }
+    .video-controls { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 1rem; display: flex; align-items: center; gap: 0.8rem; opacity: 0; transition: opacity 0.3s; color: white; font-size: 0.9rem; }
+    .video-wrapper:hover .video-controls { opacity: 1; }
+    .ctrl-btn { background: rgba(255,255,255,0.2); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; backdrop-filter: blur(4px); position: relative; }
+    .ctrl-btn:hover { background: rgba(255,255,255,0.4); transform: scale(1.1); }
+    .ctrl-btn svg { width: 18px; height: 18px; fill: currentColor; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .progress-container { flex: 1; height: 6px; background: rgba(255,255,255,0.3); border-radius: 3px; cursor: pointer; overflow: hidden; }
+    .progress-bar { height: 100%; width: 0%; background: #2b6cb0; border-radius: 3px; transition: width 0.1s; }
+    .time { font-size: 0.85rem; min-width: 40px; text-align: center; }
+    .video-hint { text-align: center; margin-top: 0.8rem; color: #2b6cb0; font-size: 0.9rem; font-style: italic; }
+    .tech-highlights { grid-column: 1 / -1; margin-top: 2rem; padding: 1.5rem; background: #f0f8ff; border-radius: 12px; text-align: center; }
+    .tech-highlights h3 { color: #1a3c8a; margin-bottom: 1rem; }
+    .tech-tags span { background: #1a3c8a; color: white; padding: 0.4rem 1rem; border-radius: 25px; font-size: 0.85rem; font-weight: 600; }
+    .screenshots h3 { color: #1a3c8a; }
+    .back-link { color: #2b6cb0; }
+    .back-link:hover { color: #1a3c8a; }
+    @media (max-width: 768px) { .content { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-
   <div class="container">
-    <h1>關於我</h1>
+    <div class="header">
+      <h1>AR 捷運室內導航系統</h1>
+      <p>Android × Immersal SDK × AWS EC2 + RDS | 擴增實境定位導航</p>
+    </div>
 
-    <h2>學歷背景</h2>
-    <p>實踐大學（台北校區） 資訊科技與管理學系<br>資訊應用服務創新學程（深化學成）<br>企業E化學程（跨領域）<br>2022 – 2026/1（預計畢業）</p>
+    <div class="content">
+      <div class="text-section">
+        <h2>專案概述</h2>
+        <p>
+          使用 <strong>Immersal AR Cloud SDK</strong> 實現室內空間定位，<strong>Android Studio</strong> 原生開發 APP，後端 API 部署於 <strong>AWS EC2 + RDS</strong>。
+        </p>
 
-    <h2>專業技能</h2>
-    <ul>
-      <li>前端開發：HTML, CSS, JavaScript, Responsive Design（響應式網頁設計）</li>
-      <li>資料分析：Python, SQL, Power BI, Excel</li>
-      <li>雲端技術：AWS, SAP S/4HANA Cloud</li>
-      <li>設計工具：Figma, Canva, Adobe （Photoshop, Illustrator, Premiere Pro, InDesign, After Effects, Dreamweaver）</li>
-	  <li>ERP系統：SAP S/4HANA, MF2000</li>
-	</ul>
+        <h2>核心功能</h2>
+        <ul>
+          <li>3D 空間掃描與地圖建置</li>
+          <li>即時 AR 導航路徑顯示</li>
+          <li>捷運站內 POI 標記</li>
+          <li>後端地圖資料同步</li>
+        </ul>
 
-    <h2>專案經驗</h2>
-	<ul>
-	  <li><strong>個人作品網站</strong> – 響應式設計、動態互動、HTML/CSS/JavaScript 實作</li>	  
-	  <li><strong>AWS 英文學習平台</strong> – 前端 HTML/CSS + 後端 RDS (MySQL) + EC2 部署 + S3 靜態資源儲存</li>
-	  <li><strong>AWS 身分驗證系統</strong> – HTML + PHP 登入介面、EC2 主機部署、RDS 資料庫儲存使用者憑證</li>	  
-	  <li><strong>SAP 企業 ESG 分析專案</strong> – SAP S/4HANA 資料提取、ABAP 自訂報表開發、Power BI 視覺化儀表板</li>	  
-	  <li><strong>AR 捷運室內導航系統</strong> – Immersal SDK 空間定位、Android Studio 原生開發、EC2 後端 API、RDS + MySQL 地圖資料庫</li>	  
-	  <li><strong>追星記帳自動化系統</strong> – Google Forms 資料收集、AppSheet 無碼應用建置、Excel 自動化報表生成</li>	 
-	  <li><strong>企業網頁設計專案</strong> – HTML/CSS/JavaScript 前端 + ASP.NET 後端整合、響應式 UI 與表單處理</li>	  
-	  <li><strong>高速公路動物致死與交通事故分析</strong> – 政府 Open Data API 串接、Excel 資料清理與樞紐分析、Power BI 互動式報表</li>	  
-	  <li><strong>Jetson Nano 人工智慧入門專案</strong> – Jetson Orin Nano 硬體平台、Ubuntu Linux 系統設定、AI 模型部署與影像辨識實作</li>
-	</ul>
-	
-	<h2>實習經驗</h2>
-    <ul>
-      <li>學校圖資服務一組 擔任維修隊</li>
-      <li>計算機概論與網頁設計助教</li>
-      <li>SAP 導入實習顧問 ＠CERPS</li>
-	</ul>
-	
-	<h2>競賽經驗</h2>
-    <ul>
-      <li>2025第30屆大專校院資訊應用服務創新競賽 進入決賽</li>
-	  <li>2025實踐資訊X輔大軟創 跨校聯合專題發表暨競賽</li>
-	</ul>
+        <h2>技術架構</h2>
+        <p>
+          手機端 AR → <strong>EC2 API</strong> → <strong>RDS 地圖資料庫</strong>，實現動態導航。
+        </p>
 
-    <h2>興趣與價值觀</h2>
-    <p>
-	我對資訊技術與數據探索充滿熱情，<strong>特別喜歡從複雜的資料中挖掘價值，揭示背後的故事與趨勢</strong>。技術不僅是工具，更是一種能夠推動產業與社會進步的力量。過程中的持續學習與挑戰，讓我體會到知識的力量與成長的意義。此外，我也重視團隊合作與領導力，認為開放溝通與共同目標是專案成功的關鍵。工作與學習的過程中，我始終秉持誠信、耐心與務實的態度，這些價值觀塑造了我面對困難時的堅韌與穩健。
-	</p>
+        <h2>學習成長</h2>
+        <p>
+          掌握 <strong>AR 開發、Android 原生、雲端 API 整合</strong>，具備空間計算與導航系統實作能力。
+        </p>
+      </div>
 
-    <h2>未來目標</h2>
-    <p>
-	展望未來，我希望成為一位具備深厚技術底蘊與產業洞察的<strong>資料探勘專家</strong>，能將先進的數據分析與智慧管理技術實際運用於企業決策優化中。<strong>我期望持續進修，深化人工智慧、雲端技術與ESG永續發展的整合應用能力</strong>，為企業創造更高的價值並推動永續轉型。同時，我也志在成為跨領域的橋樑，促進資訊科技與企業管理的有效融合，並以技術驅動創新，為社會帶來積極的改變。中央大學資訊管理研究所將是我實現這些願景的重要里程碑。
-	</p>
+      <div class="video-section">
+        <div class="video-wrapper">
+          <video id="projectVideo" class="project-video" preload="metadata" playsinline autoplay muted loop>
+            <source src="videos/ar_mrt_demo.mp4" type="video/mp4">
+            您的瀏覽器不支援影片。
+          </video>
+          <div class="video-controls">
+            <button id="playPauseBtn" class="ctrl-btn">
+              <svg viewBox="0 0 24 24" class="icon-play"><path d="M8,5.14V19.14L19,12L8,5.14Z"/></svg>
+              <svg viewBox="0 0 24 24" class="icon-pause" style="display:none;"><path d="M14,19H18V5H14V19ZM6,19H10V5H6V19Z"/></svg>
+            </button>
+            <button id="muteBtn" class="ctrl-btn">
+              <svg viewBox="0 0 24 24" class="icon-volume"><path d="M3,9V15H7L12,20V4L7,9H3ZM16.5,12C16.5,10.23 15.5,8.71 14,7.71V16.29C15.5,15.29 16.5,13.76 16.5,12ZM19,12C19,13.76 18.5,15.29 17,16.29V7.71C18.5,8.71 19,10.23 19,12Z"/></svg>
+              <svg viewBox="0 0 24 24" class="icon-mute" style="display:none;"><path d="M3,9H7L12,4V20L7,15H3V9ZM14.83,11.17L17.66,8.34L16.24,6.93L13.41,9.76L10.59,6.93L9.17,8.34L12,11.17L9.17,14L10.59,15.42L13.41,12.59L16.24,15.42L17.66,14L14.83,11.17Z"/></svg>
+            </button>
+            <div class="progress-container">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <span id="currentTime" class="time">0:00</span> /
+            <span id="duration" class="time">0:00</span>
+            <button id="fullscreenBtn" class="ctrl-btn">
+              <svg viewBox="0 0 24 24"><path d="M7,14H5V19H10V17H7V14ZM5,10H7V7H10V5H5V10ZM17,17H14V19H19V14H17V17ZM14,5V7H17V10H19V5H14Z"/></svg>
+            </button>
+          </div>
+          <p class="video-hint">點擊影片在新分頁觀看完整版本</p>
+        </div>
+      </div>
+    </div>
 
-    <h2>我的履歷</h2>
-    <p>想了解更詳細的經歷？點擊下方下載完整履歷：</p>
-    <!-- 履歷預覽圖 + 下載按鈕 -->
-	<div class="resume-preview">
-	  <a href="resume/Hilda_Resume.pdf" target="_blank" class="resume-image-link">
-		<img src="resume/Hilda_Resume.png" alt="履歷預覽" class="resume-preview-img">
-	  </a>
-	  <a href="resume/Hilda_Resume.pdf" download class="resume-btn" target="_blank" >
-		下載履歷 PDF
-	  </a>
-	</div>
-    <a href="index.html" class="back-link">← 回到首頁</a>
+    <div class="tech-highlights">
+      <h3>核心技術</h3>
+      <div class="tech-tags">
+        <span>Android Studio</span>
+        <span>Immersal SDK</span>
+        <span>AR</span>
+        <span>AWS EC2</span>
+        <span>RDS</span>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h3>APP 功能截圖</h3>
+      <div class="screenshot-carousel">
+        <div class="screenshot-item">
+          <div class="img-container">
+            <img src="images/作品集/ar_scan.png" alt="空間掃描">
+          </div>
+          <p>3D 空間掃描建圖</p>
+        </div>
+        <div class="screenshot-item">
+          <div class="img-container">
+            <img src="images/作品集/ar_nav.png" alt="AR 導航">
+          </div>
+          <p>即時 AR 路徑導航</p>
+        </div>
+        <div class="screenshot-item">
+          <div class="img-container">
+            <img src="images/作品集/ar_poi.png" alt="POI 標記">
+          </div>
+          <p>站內興趣點標記</p>
+        </div>
+      </div>
+    </div>
+
+    <a href="index.html#portfolio" class="back-link">返回作品集</a>
   </div>
 
+  <script>
+    /* 沿用相同播放器 JS */
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('projectVideo');
+      const playPauseBtn = document.getElementById('playPauseBtn');
+      const muteBtn = document.getElementById('muteBtn');
+      const progressBar = document.getElementById('progressBar');
+      const progressContainer = document.querySelector('.progress-container');
+      const currentTimeEl = document.getElementById('currentTime');
+      const durationEl = document.getElementById('duration');
+      const fullscreenBtn = document.getElementById('fullscreenBtn');
+      const videoWrapper = document.querySelector('.video-wrapper');
+
+      const startAutoPlay = () => {
+        video.muted = true; video.loop = true;
+        video.play().catch(() => {
+          const activate = () => { video.play(); document.body.removeEventListener('click', activate); };
+          document.body.addEventListener('click', activate, { once: true });
+        });
+      };
+      startAutoPlay();
+
+      const formatTime = (s) => `${Math.floor(s/60)}:${(Math.floor(s%60)+'').padStart(2,'0')}`;
+      const updateProgress = () => {
+        if (video.duration) {
+          progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
+          currentTimeEl.textContent = formatTime(video.currentTime);
+        }
+      };
+
+      playPauseBtn.addEventListener('click', e => { e.stopPropagation();
+        if (video.paused) { video.play(); playPauseBtn.querySelector('.icon-play').style.display = 'none'; playPauseBtn.querySelector('.icon-pause').style.display = 'block'; }
+        else { video.pause(); playPauseBtn.querySelector('.icon-play').style.display = 'block'; playPauseBtn.querySelector('.icon-pause').style.display = 'none'; }
+      });
+
+      muteBtn.addEventListener('click', e => { e.stopPropagation();
+        video.muted = !video.muted;
+        muteBtn.querySelector('.icon-volume').style.display = video.muted ? 'none' : 'block';
+        muteBtn.querySelector('.icon-mute').style.display = video.muted ? 'block' : 'none';
+      });
+
+      progressContainer.addEventListener('click', e => { e.stopPropagation();
+        const pos = (e.clientX - progressContainer.getBoundingClientRect().left) / progressContainer.offsetWidth;
+        video.currentTime = pos * video.duration;
+      });
+
+      fullscreenBtn.addEventListener('click', e => { e.stopPropagation();
+        if (video.requestFullscreen) video.requestFullscreen();
+        else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+      });
+
+      video.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(video.duration); });
+      video.addEventListener('timeupdate', updateProgress);
+
+      videoWrapper.addEventListener('click', e => {
+        if (e.target.closest('.video-controls')) return;
+        const newTab = window.open('', '_blank');
+        newTab.document.write(`
+          <!DOCTYPE html><html><head><title>AR 捷運導航 - 完整演示</title>
+          <style>body,html{margin:0;height:100%;background:#000;display:flex;justify-content:center;align-items:center;}
+          video{max-width:100%;max-height:100%;}</style></head>
+          <body><video controls autoplay loop><source src="${video.querySelector('source').src}" type="video/mp4"></video></body></html>
+        `);
+      });
+
+      let timeout;
+      const show = () => {
+        document.querySelector('.video-controls').style.opacity = '1';
+        clearTimeout(timeout);
+        timeout = setTimeout(() => { if (!video.paused) document.querySelector('.video-controls').style.opacity = '0'; }, 3000);
+      };
+      videoWrapper.addEventListener('mousemove', show);
+      videoWrapper.addEventListener('mouseenter', show);
+    });
+  </script>
 </body>
 </html>
