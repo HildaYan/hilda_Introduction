@@ -1,0 +1,58 @@
+/* components.css - 可重複元件 */
+nav {
+  background-color: #e4ddd6;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #9c8b7a;
+}
+
+/* 區塊動畫（可視作 layout 區塊的初始狀態） */
+section {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-in-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #776b5d;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #e4ddd6;
+  color: #555;
+}
+
+
+
+
