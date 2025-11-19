@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chen Wun-Yan – My Journey in Tech</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer crossorigin="anonymous"></script>
   <style>
     /* === 基本設定 === */
     * {
@@ -885,6 +886,456 @@
   .profile-details h3 { font-size: 1.5rem; }
   .contact-item { flex-direction: column; text-align: center; gap: 0.3rem; }
 }
+
+/* ===== 特別指定：About 區塊不使用白色卡片樣式 ===== */
+#about.about {
+  background: transparent !important;   /* 移除白色背景 */
+  box-shadow: none !important;          /* 移除陰影 */
+  padding: 4rem 2rem !important;       /* 保留上下左右舒適間距，但不內縮成卡片 */
+  margin: 0 auto !important;           /* 保持水平置中 */
+  max-width: 1200px !important;         /* 比其他卡片更寬一點，視覺更開闊 */
+  border-radius: 0 !important;          /* 移除圓角 */
+}
+
+/* 手機版也同步調整 */
+@media (max-width: 768px) {
+  #about.about {
+    padding: 3rem 1.5rem !important;
+  }
+}
+
+/* ===== 證照區塊 - 滿版寬度 + 文字對齊優化版 ===== */
+#certificates.certificates {
+  max-width: 100% !important;        /* 強制滿版 */
+  margin: 6rem 0 4rem !important;    /* 上下留白更大氣 */
+  padding: 4rem 5% !important;       /* 左右留邊，不貼邊 */
+  background: linear-gradient(to bottom, transparent, #f8f5f3), #fff;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 標題更大氣 */
+#certificates .en-name {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #9c8b7a;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+#certificates h2 {
+  text-align: center;
+  font-size: 2.6rem;
+  color: #776b5d;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+
+/* 輪播容器滿寬 */
+.carousel-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* 每張證照卡片優化 */
+.carousel-slide {
+  min-width: 280px;           /* 卡片更寬 */
+  max-width: 300px;
+  padding: 1.8rem 1.4rem;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+  text-align: left;           /* 重要：文字靠左 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 480px;              /* 固定高度，排版整齊 */
+}
+
+.carousel-slide:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  background: #fdfbfa;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+/* 證照文字區：名稱靠右、日期靠左 */
+.carousel-slide p {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.carousel-slide p strong {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #776b5d;
+  text-align: right;          /* 證照名稱靠右 */
+  margin-top: 0.3rem;
+  line-height: 1.4;
+}
+
+/* 發證單位保持靠左 */
+.carousel-slide p br:first-child ~ * {
+  text-align: left;
+}
+
+/* 左右按鈕更大、更明顯 */
+.carousel-btn {
+  width: 50px;
+  height: 50px;
+  background: rgba(119, 107, 93, 0.9);
+  font-size: 1.8rem;
+  backdrop-filter: blur(8px);
+  box also: 0 8px 25px rgba(0,0,0,0.2);
+}
+.carousel-btn:hover {
+  background: #776b5d;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* 手機版調整 */
+@media (max-width: 768px) {
+  #certificates.certificates {
+    padding: 3rem 4% !important;
+    margin: 4rem 0 !important;
+  }
+  #certificates h2 {
+    font-size: 2rem;
+  }
+  .carousel-slide {
+    min-width: 240px;
+    height: 260px;
+    padding: 1.5rem 1.2rem;
+  }
+  .carousel-slide img {
+    height: 140px;
+  }
+}
+
+/* ===== 證照燈箱效果（Lightbox）===== */
+.lightbox-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(243, 241, 239, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.lightbox-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+pointer-events: none;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  overflow: hidden;
+  max-width: 900px;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  animation: zoomIn 0.5s ease;
+  position: relative;        /* ← 加上這一行就搞定！ */
+  z-index: 1;                 /* 保險起見再加這行 */
+}
+.lightbox-img,
+.lightbox-info,
+.lightbox-img img {
+  pointer-events: auto;        /* 只有圖片和文字區可以點（如果你想點圖也能關閉可省略這行） */
+}
+
+/* 圖片區 */
+.lightbox-img {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fdfbfa;
+}
+.lightbox-img img {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* 文字區 */
+.lightbox-info {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.lightbox-info h3 {
+  font-size: 1.8rem;
+  color: #776b5d;
+  font-weight: 700;
+}
+.lightbox-info .issuer {
+  font-size: 1.1rem;
+  color: #9c8b7a;
+  letter-spacing: 1px;
+}
+.lightbox-info .cert-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #444;
+  line-height: 1.5;
+}
+.lightbox-info .date {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* 關閉按鈕 */
+.lightbox-close {
+  pointer-events: auto !important;
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+  background: rgba(119,107,93,0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  z-index: 99999;
+  
+  /* 絕對置中神技 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1 !important;
+}
+
+.lightbox-close:hover {
+  background: #776b5d;
+  transform: scale(1.12);
+}
+
+/* 動畫 */
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* 手機版：上下排列 */
+@media (max-width: 768px) {
+  .lightbox-content {
+    grid-template-columns: 1fr;
+    width: 95%;
+  }
+  .lightbox-info {
+    padding: 2rem;
+    text-align: center;
+  }
+  .lightbox-img {
+    padding: 1.5rem;
+  }
+}
+
+/* ===== 作品集區塊 - 滿版 + 無白底 + 每排4個 ===== */
+#portfolio {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 6rem 5% 4rem !important;
+  margin: 0 auto !important;
+  max-width: 100% !important;
+  border-radius: 0 !important;
+}
+
+/* 標題更優雅 */
+#portfolio .about-text {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+#portfolio .en-subtitle {
+  font-size: 1.2rem;
+  color: #9c8b7a;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+#portfolio h2 {
+  font-size: 2.8rem;
+  color: #776b5d;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+/* 網格強制每排 4 個 */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);   /* 強制 4 欄 */
+  gap: 2.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* 翻牌卡片微調（更輕盈） */
+.flip-card {
+  height: 340px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  transition: all 0.4s ease;
+}
+.flip-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+}
+
+/* 手機版自動變 2 欄 → 1 欄 */
+@media (max-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);   /* 螢幕小一點變兩欄 */
+  }
+}
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;               /* 手機一欄 */
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  #portfolio h2 {
+    font-size: 2.2rem;
+  }
+  .flip-card {
+    height: 320px;
+  }
+}
+
+/* ===== 作品集標題 - 完全置中 + 大間距（不用額外 div）===== */
+#portfolio > .en-subtitle,
+#portfolio > h2 {
+  text-align: center !important;
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#portfolio > .en-subtitle {
+  font-size: 1.25rem;
+  color: #9c8b7a;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+/* 關鍵：這行決定標題與下方作品的距離 */
+#portfolio > h2 {
+  font-size: 3rem;
+  color: #776b5d;
+  font-weight: 700;
+  margin: 0 auto 6rem auto;   /* 這裡就是你想要的大間距！6rem 超有氣勢 */
+  line-height: 1.2;
+}
+
+/* 手機版優化 */
+@media (max-width: 768px) {
+  #portfolio > h2 {
+    font-size: 2.4rem;
+    margin-bottom: 4.5rem;
+  }
+  #portfolio > .en-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+  }
+}
+
+/* ===== 在校核心能力指標 - 完全置中 + 大間距（跟作品集一模一樣風格）===== */
+#Core\ Competencies > .en-subtitle,
+#Core\ Competencies > h2 {
+  text-align: center !important;
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#Core\ Competencies > .en-subtitle {
+  font-size: 1.25rem;
+  color: #9c8b7a;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+#Core\ Competencies > h2 {
+  font-size: 3rem;
+  color: #776b5d;
+  font-weight: 700;
+  margin: 0 auto 6rem auto;     /* 跟作品集一樣超有氣勢的 6rem 距離 */
+  line-height: 1.2;
+}
+
+/* 手機版優化 */
+@media (max-width: 768px) {
+  #Core\ Competencies > h2 {
+    font-size: 2.4rem;
+    margin-bottom: 4.5rem;
+  }
+  #Core\ Competencies > .en-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+  }
+}
+
+/* 進度條初始狀態 + 超順動畫 */
+.progress-fill {
+  width: 0% !important;
+  height: 100%;
+  background: linear-gradient(90deg, #9c8b7a, #c7b8a9);
+  transition: width 2.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: 4px;
+}
+.skill-progress {
+  background: #e4ddd6;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 10px;
+}
+.skill-chart {
+  height: 380px;
+  background: #fdfbfa;
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+
   </style>
 </head>
 <body>
@@ -914,6 +1365,72 @@
     <div class="scroll-down">▼ Scroll Down ▼</div>
   </header>
 
+<section id="certificates" class="certificates">
+  <p class="en-name">Certificates</p><h2>證照與認證</h2>
+  <div class="carousel-container">
+    
+    <!-- 左右按鈕 -->
+    <button class="carousel-btn prev-btn" aria-label="上一張">❮</button>
+    <button class="carousel-btn next-btn" aria-label="下一張">❯</button>
+
+    <!-- 輪播內容 -->
+    <div class="carousel-track-container">
+      <div class="carousel-track">
+
+        <!-- 證照 1 -->
+		<div class="carousel-slide">
+		  <img src="images/證照/透過 Jetson Nano 開發人工智慧應用_ NVIDIA.png" alt="NVIDIA Jetson Nano">
+		  <p>
+			NVIDIA<br>
+			<strong>透過 Jetson Nano 開發人工智慧應用</strong><br>
+			2025.09.21
+		  </p>
+		</div>
+
+                <!-- 證照 2 -->
+        <div class="carousel-slide">
+          <img src="images/證照/Microsoft Certified Azure AI Fundamentals(Ai-900).png" alt="Microsoft Azure AI Fundamentals">
+          <p>
+            Microsoft<br>
+            <strong>Azure AI Fundamentals (AI-900)</strong><br>
+            2024.05.13
+          </p>
+        </div>
+
+        <!-- 證照 3 -->
+        <div class="carousel-slide">
+          <img src="images/證照/Network Security.png" alt="Network Security 國際認證">
+          <p>
+            Pearson VUE / Certiport<br>
+            <strong>ITS 資訊科技專家<br>Network Security 網路安全管理核心能力</strong><br>
+            2024.12.07
+          </p>
+        </div>
+
+        <!-- 證照 4 -->
+        <div class="carousel-slide">
+          <img src="images/證照/供應鏈管理專業證照.png" alt="供應鏈管理專業認證">
+          <p>
+            中華民國物流協會<br>
+            <strong>供應鏈管理專業認證<br>營運管理師</strong><br>
+            2025.06.23
+          </p>
+        </div>
+
+        <!-- 證照 5 -->
+        <div class="carousel-slide">
+          <img src="images/證照/餐飲資訊系統基礎檢定證書.png" alt="餐飲資訊系統基礎檢定">
+          <p>
+            中央大學 ERPS<br>
+            <strong>餐飲資訊系統基礎檢定<br>Fundamentals of Restaurant Management System</strong><br>
+            2024.06
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
   <section id="about" class="about">
   <div class="about-container">
     <!-- 左邊圖片 + 名字 -->
@@ -934,10 +1451,10 @@
 </section>
 
 	<section id="portfolio">
-	<div class="about-text" >
-	  <p class="en-subtitle">portfolio</p>
-	  <h2>作品集</h2>
-	</div>
+  
+  <p class="en-subtitle">Portfolio</p>
+  <h2>作品集</h2>
+	  
 	  <div class="projects-grid">
 
 		<!-- 作品 1：個人網站 -->
@@ -1174,222 +1691,107 @@
 	  </div>
 	</section>
 
-  <section id="certificates" class="certificates">
-  <h2>證照與認證</h2>
-  <div class="carousel-container">
-    
-    <!-- 左右按鈕 -->
-    <button class="carousel-btn prev-btn" aria-label="上一張">❮</button>
-    <button class="carousel-btn next-btn" aria-label="下一張">❯</button>
-
-    <!-- 輪播內容 -->
-    <div class="carousel-track-container">
-      <div class="carousel-track">
-
-        <!-- 證照 1 -->
-        <div class="carousel-slide">
-          <img src="images/證照/透過 Jetson Nano 開發人工智慧應用_ NVIDIA.png" alt="AWS Certified Cloud Practitioner">
-          <p>NVIDIA<br><strong>透過 Jetson Nano 開發人工智慧應用</strong><br>2025.09.21</p>
-        </div>
-
-        <!-- 證照 2 -->
-        <div class="carousel-slide">
-          <img src="images/證照/Microsoft Certified Azure AI Fundamentals(Ai-900).png" alt="Google Data Analytics">
-          <p>Microsoft<br><strong>Ai-900</strong><br>2024.05.13</p>
-        </div>
-
-        <!-- 證照 3 -->
-        <div class="carousel-slide">
-          <img src="images/證照/Network Security.png" alt="Azure Fundamentals">
-          <p>Pearson VUE/Certiport<br><strong>Pearson VUE ITS 資訊科技專家 國際專業認證 Network Security 網路安全管理核心能力</strong><br>2024.12.07</p>
-        </div>
-
-        <!-- 證照 4 -->
-        <div class="carousel-slide">
-          <img src="images/證照/供應鏈管理專業證照.png" alt="SAP Certified">
-          <p>中華民國物流協會<br><strong>供應鏈管理專業認證-營運管理師</strong><br>2025.06.23</p>
-        </div>
-
-        <!-- 證照 5 -->
-        <div class="carousel-slide">
-          <img src="images/證照/餐飲資訊系統基礎檢定證書.png" alt="TOEIC 850">
-          <p>中央大學ERPS<br><strong>餐飲資訊系統基礎檢定考試 Fundamentals of Restaurant Management System</strong><br>2024.06</p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-  <section id="Core Competencies">
+  
+  <section id="CoreCompetencies">
+  <p class="en-subtitle">Core Competencies</p>
   <h2>在校核心能力指標</h2>
-  
-  <!-- Chart.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
+
   <div class="skills-container">
-    
     <!-- 雷達圖 -->
     <div class="skill-chart">
       <canvas id="schoolSkillsRadar"></canvas>
     </div>
-    
+
     <!-- 長條圖 -->
     <div class="skill-bars">
       <div class="skill-bar">
-        <span class="skill-label">專案管理</span>
-        <div class="skill-progress">
-          <div class="progress-fill" data-width="92"></div>
-        </div>
-        <span class="skill-score">92%</span>
-      </div>
-      
-      <div class="skill-bar">
-        <span class="skill-label">團隊合作</span>
-        <div class="skill-progress">
-          <div class="progress-fill" data-width="88"></div>
-        </div>
-        <span class="skill-score">88%</span>
-      </div>
-      
-      <div class="skill-bar">
-        <span class="skill-label">問題解決</span>
-        <div class="skill-progress">
-          <div class="progress-fill" data-width="95"></div>
-        </div>
+        <span class="skill-label">數位科技應用能力</span>
+        <div class="skill-progress"><div class="progress-fill" data-width="95"></div></div>
         <span class="skill-score">95%</span>
       </div>
-      
       <div class="skill-bar">
-        <span class="skill-label">時間管理</span>
-        <div class="skill-progress">
-          <div class="progress-fill" data-width="90"></div>
-        </div>
-        <span class="skill-score">90%</span>
+        <span class="skill-label">資訊管理應用能力</span>
+        <div class="skill-progress"><div class="progress-fill" data-width="90.1"></div></div>
+        <span class="skill-score">90.1%</span>
+      </div>
+      <div class="skill-bar">
+        <span class="skill-label">程式設計應用能力</span>
+        <div class="skill-progress"><div class="progress-fill" data-width="92.43"></div></div>
+        <span class="skill-score">92.43%</span>
+      </div>
+      <div class="skill-bar">
+        <span class="skill-label">經營管理知能能力</span>
+        <div class="skill-progress"><div class="progress-fill" data-width="91.52"></div></div>
+        <span class="skill-score">91.52%</span>
+      </div>
+      <div class="skill-bar">
+        <span class="skill-label">自主學習與團隊合作能力</span>
+        <div class="skill-progress"><div class="progress-fill" data-width="92.55"></div></div>
+        <span class="skill-score">92.55%</span>
       </div>
     </div>
-    
   </div>
+</section>
 
-  <!-- 專業核心能力指標 -->
-  <h2 class="pro-title">專業核心能力指標</h2>
-  
-  <div class="skills-container">
-    
-    <!-- 雷達圖 -->
-    <div class="skill-chart">
-      <canvas id="proSkillsRadar"></canvas>
-    </div>
-    
-    <!-- 長條圖 -->
-    <div class="skill-bars">
-      <div class="skill-bar">
-        <span class="skill-label">雲端架構</span>
-        <div class="skill-progress">
-          <div class="progress-fill pro" data-width="88"></div>
-        </div>
-        <span class="skill-score">88%</span>
-      </div>
-      
-      <div class="skill-bar">
-        <span class="skill-label">資料分析</span>
-        <div class="skill-progress">
-          <div class="progress-fill pro" data-width="92"></div>
-        </div>
-        <span class="skill-score">92%</span>
-      </div>
-      
-      <div class="skill-bar">
-        <span class="skill-label">前端開發</span>
-        <div class="skill-progress">
-          <div class="progress-fill pro" data-width="85"></div>
-        </div>
-        <span class="skill-score">85%</span>
-      </div>
-      
-      <div class="skill-bar">
-        <span class="skill-label">ERP 系統</span>
-        <div class="skill-progress">
-          <div class="progress-fill pro" data-width="78"></div>
-        </div>
-        <span class="skill-score">78%</span>
-      </div>
-    </div>
-	<script>
-// 在校核心能力雷達圖
-const schoolCtx = document.getElementById('schoolSkillsRadar').getContext('2d');
-new Chart(schoolCtx, {
-  type: 'radar',
-  data: {
-    labels: ['專案管理', '團隊合作', '問題解決', '時間管理', '溝通表達'],
-    datasets: [{
-      label: '在校表現',
-      data: [92, 88, 95, 90, 87],
-      backgroundColor: 'rgba(156, 139, 122, 0.15)',
-      borderColor: '#9c8b7a',
-      borderWidth: 3,
-      pointBackgroundColor: '#776b5d',
-      pointBorderColor: '#fff',
-      pointBorderWidth: 2,
-      pointRadius: 6,
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      r: {
-        angleLines: { color: '#e4ddd6' },
-        grid: { color: '#e4ddd6' },
-        pointLabels: { color: '#776b5d', font: { size: 12 } },
-        ticks: { color: '#9c8b7a', backdropColor: 'transparent' }
-      }
-    },
-    plugins: { legend: { display: false } }
-  }
-});
-
-// 專業核心能力雷達圖
-const proCtx = document.getElementById('proSkillsRadar').getContext('2d');
-new Chart(proCtx, {
-  type: 'radar',
-  data: {
-    labels: ['雲端架構', '資料分析', '前端開發', 'ERP系統', 'AI應用'],
-    datasets: [{
-      label: '專業能力',
-      data: [88, 92, 85, 78, 82],
-      backgroundColor: 'rgba(119, 107, 93, 0.2)',
-      borderColor: '#776b5d',
-      borderWidth: 3,
-      pointBackgroundColor: '#9c8b7a',
-      pointBorderColor: '#fff',
-      pointBorderWidth: 2,
-      pointRadius: 6,
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      r: {
-        angleLines: { color: '#e4ddd6' },
-        grid: { color: '#e4ddd6' },
-        pointLabels: { color: '#9c8b7a', font: { size: 12 } },
-        ticks: { color: '#776b5d', backdropColor: 'transparent' }
-      }
-    },
-    plugins: { legend: { display: false } }
-  }
-});
-
-// 動畫長條圖
+<!-- 最終 JS（放在 </body> 前，保證成功） -->
+<script>
+// 核心能力雷達圖 + 進度條動畫（已修好所有錯誤）
 document.addEventListener('DOMContentLoaded', () => {
-  const fills = document.querySelectorAll('.progress-fill');
-  fills.forEach(fill => {
-    const width = fill.getAttribute('data-width');
-    setTimeout(() => {
-      fill.style.width = width + '%';
-    }, 500);
-  });
+  const radarCanvas = document.getElementById('schoolSkillsRadar');
+  let radarChart = null;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // 進度條動畫
+        document.querySelectorAll('.progress-fill').forEach(bar => {
+          bar.style.width = bar.getAttribute('data-width') + '%';
+        });
+
+        // 0.4秒後畫雷達圖
+        setTimeout(() => {
+          if (radarChart) radarChart.destroy();
+          const ctx = radarCanvas.getContext('2d');
+          radarChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+              labels: ['數位科技應用能力','資訊管理應用能力','程式設計應用能力','經營管理知能能力','自主學習與團隊合作能力'],
+              datasets: [{
+                data: [95, 90.1, 92.43, 91.52, 92.55],
+                backgroundColor: 'rgba(156,139,122,0.18)',
+                borderColor: '#9c8b7a',
+                borderWidth: 3.5,
+                pointBackgroundColor: '#776b5d',
+                pointBorderColor: '#fff',
+                pointRadius: 7,
+                fill: true
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              animation: { duration: 2200, easing: 'easeOutQuart' },
+              scales: { 
+                r: { 
+                  min: 0, max: 100, 
+                  ticks: { stepSize: 20, color: '#9c8b7a', backdropColor: 'transparent' },
+                  grid: { color: '#e4ddd6' },
+                  angleLines: { color: '#e4ddd6' },
+                  pointLabels: { color: '#776b5d', font: { size: 13, weight: '600' }, padding: 20 }
+                } 
+              },
+              plugins: { legend: { display: false } }
+            }
+          });
+        }, 400);
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  // 關鍵：這裡不能有空格！
+  observer.observe(document.querySelector('#CoreCompetencies'));
 });
 </script>
     
@@ -1423,6 +1825,22 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 </section>
+<!-- 證照燈箱 -->
+<!-- 改成這樣 -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="closeLightbox">×</button>  <!-- 直接放在最外層 -->
+  <div class="lightbox-content">
+    <div class="lightbox-img">
+      <img id="lightboxImage" src="" alt="證照放大圖">
+    </div>
+    <div class="lightbox-info">
+      <div class="issuer" id="lightboxIssuer"></div>
+      <h3 class="cert-name" id="lightboxName"></h3>
+      <div class="date" id="lightboxDate"></div>
+    </div>
+  </div>
+</div>
+
 <script>
   document.querySelectorAll('.contact-item[data-copy]').forEach(item => {
     item.addEventListener('click', () => {
@@ -1433,7 +1851,54 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+  
+ 
+
+  
+ 
+// 證照燈箱功能
+document.querySelectorAll('.carousel-slide').forEach(slide => {
+  slide.style.cursor = 'pointer';
+  slide.addEventListener('click', () => {
+    const img = slide.querySelector('img');
+    const p = slide.querySelector('p');
+    const lines = p.innerHTML.split('<br>');
+    
+    // 提取資料
+    const issuer = lines[0].trim();
+    const certName = p.querySelector('strong')?.innerText || '';
+    const date = lines[lines.length - 1].trim();
+
+    // 填入燈箱
+    document.getElementById('lightboxImage').src = img.src;
+    document.getElementById('lightboxIssuer').textContent = issuer;
+    document.getElementById('lightboxName').textContent = certName;
+    document.getElementById('lightboxDate').textContent = date;
+
+    // 開啟燈箱
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden'; // 防止背景滾動
+  });
+});
+
+// 關閉燈箱
+
+document.getElementById('closeLightbox').addEventListener('click', () => {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = 'auto';
+});
+
+// 點擊遮罩也關閉
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('lightbox')) {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+});
+
 </script>
+
+
 
   <footer>
     <p>© 2025 by Chen Wun-Yan. All Rights Reserved.</p>

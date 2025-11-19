@@ -89,253 +89,253 @@
     }
 
     .video-section {
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  background: #000;
-}
+	  position: relative;
+	  border-radius: 15px;
+	  overflow: hidden;
+	  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+	  background: #000;
+	}
 
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  cursor: pointer;
-}
+	.video-wrapper {
+	  position: relative;
+	  width: 100%;
+	  cursor: pointer;
+	}
 
-.project-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 15px;
-}
+	.project-video {
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;
+	  display: block;
+	  border-radius: 15px;
+	}
 
-.video-controls {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  opacity: 0;
-  transition: opacity 0.3s;
-  color: white;
-  font-size: 0.9rem;
-}
+	.video-controls {
+	  position: absolute;
+	  bottom: 0;
+	  left: 0;
+	  right: 0;
+	  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+	  padding: 1rem;
+	  display: flex;
+	  align-items: center;
+	  gap: 0.8rem;
+	  opacity: 0;
+	  transition: opacity 0.3s;
+	  color: white;
+	  font-size: 0.9rem;
+	}
 
-.video-wrapper:hover .video-controls {
-  opacity: 1;
-}
+	.video-wrapper:hover .video-controls {
+	  opacity: 1;
+	}
 
-.ctrl-btn {
-  background: rgba(255,255,255,0.2);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  transition: 0.3s;
-  backdrop-filter: blur(4px);
-  position: relative;
-}
+	.ctrl-btn {
+	  background: rgba(255,255,255,0.2);
+	  color: white;
+	  border: none;
+	  width: 40px;
+	  height: 40px;
+	  border-radius: 50%;
+	  cursor: pointer;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  font-size: 1.1rem;
+	  transition: 0.3s;
+	  backdrop-filter: blur(4px);
+	  position: relative;
+	}
 
-.ctrl-btn:hover {
-  background: rgba(255,255,255,0.4);
-  transform: scale(1.1);
-}
+	.ctrl-btn:hover {
+	  background: rgba(255,255,255,0.4);
+	  transform: scale(1.1);
+	}
 
-/* Icon 切換 */
-.icon-play::before { content: "Play"; }
-.icon-pause::before { content: "Pause"; }
-.icon-volume::before { content: "Volume"; }
-.icon-mute::before { content: "Mute"; }
-.icon-fullscreen::before { content: "Fullscreen"; }
+	/* Icon 切換 */
+	.icon-play::before { content: "Play"; }
+	.icon-pause::before { content: "Pause"; }
+	.icon-volume::before { content: "Volume"; }
+	.icon-mute::before { content: "Mute"; }
+	.icon-fullscreen::before { content: "Fullscreen"; }
 
-.ctrl-btn:hover {
-  background: rgba(255,255,255,0.4);
-  transform: scale(1.1);
-}
+	.ctrl-btn:hover {
+	  background: rgba(255,255,255,0.4);
+	  transform: scale(1.1);
+	}
 
-.progress-container {
-  flex: 1;
-  height: 6px;
-  background: rgba(255,255,255,0.3);
-  border-radius: 3px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
+	.progress-container {
+	  flex: 1;
+	  height: 6px;
+	  background: rgba(255,255,255,0.3);
+	  border-radius: 3px;
+	  cursor: pointer;
+	  position: relative;
+	  overflow: hidden;
+	}
 
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: #9c8b7a;
-  border-radius: 3px;
-  transition: width 0.1s;
-}
+	.progress-bar {
+	  height: 100%;
+	  width: 0%;
+	  background: #9c8b7a;
+	  border-radius: 3px;
+	  transition: width 0.1s;
+	}
 
-.time {
-  font-size: 0.85rem;
-  min-width: 40px;
-  text-align: center;
-}
+	.time {
+	  font-size: 0.85rem;
+	  min-width: 40px;
+	  text-align: center;
+	}
 
-.video-hint {
-  text-align: center;
-  margin-top: 0.8rem;
-  color: #9c8b7a;
-  font-size: 0.9rem;
-  font-style: italic;
-}
-/* 可選：用 SVG Icon（更美） */
-.ctrl-btn svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
+	.video-hint {
+	  text-align: center;
+	  margin-top: 0.8rem;
+	  color: #9c8b7a;
+	  font-size: 0.9rem;
+	  font-style: italic;
+	}
+	/* 可選：用 SVG Icon（更美） */
+	.ctrl-btn svg {
+	  width: 18px;
+	  height: 18px;
+	  fill: currentColor;
+	}
 
-/* RWD */
-@media (max-width: 768px) {
-  .video-controls {
-    padding: 0.8rem;
-    gap: 0.5rem;
-  }
-  .ctrl-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
-  }
-  .time { font-size: 0.8rem; }
-}
-	.screenshots {
-  margin-top: 2rem;
-}
+	/* RWD */
+	@media (max-width: 768px) {
+	  .video-controls {
+		padding: 0.8rem;
+		gap: 0.5rem;
+	  }
+	  .ctrl-btn {
+		width: 32px;
+		height: 32px;
+		font-size: 0.9rem;
+	  }
+	  .time { font-size: 0.8rem; }
+	}
+		.screenshots {
+	  margin-top: 2rem;
+	}
 
-.screenshots h3 {
-  text-align: center;
-  color: #776b5d;
-  margin-bottom: 1.5rem;
-  font-size: 1.4rem;
-}
+	.screenshots h3 {
+	  text-align: center;
+	  color: #776b5d;
+	  margin-bottom: 1.5rem;
+	  font-size: 1.4rem;
+	}
 
-.screenshot-carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 1.2rem;
-  padding: 1rem 0;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: #9c8b7a transparent;
-}
+	.screenshot-carousel {
+	  display: flex;
+	  overflow-x: auto;
+	  gap: 1.2rem;
+	  padding: 1rem 0;
+	  scroll-snap-type: x mandatory;
+	  scrollbar-width: thin;
+	  scrollbar-color: #9c8b7a transparent;
+	}
 
-.screenshot-carousel::-webkit-scrollbar {
-  height: 8px;
-}
+	.screenshot-carousel::-webkit-scrollbar {
+	  height: 8px;
+	}
 
-.screenshot-carousel::-webkit-scrollbar-track {
-  background: transparent;
-}
+	.screenshot-carousel::-webkit-scrollbar-track {
+	  background: transparent;
+	}
 
-.screenshot-carousel::-webkit-scrollbar-thumb {
-  background: #9c8b7a;
-  border-radius: 4px;
-}
+	.screenshot-carousel::-webkit-scrollbar-thumb {
+	  background: #9c8b7a;
+	  border-radius: 4px;
+	}
 
-.screenshot-item {
-  flex: 0 0 320px;           /* 固定寬度 */
-  scroll-snap-align: center;
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-}
+	.screenshot-item {
+	  flex: 0 0 320px;           /* 固定寬度 */
+	  scroll-snap-align: center;
+	  background: white;
+	  border-radius: 16px;
+	  overflow: hidden;
+	  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+	  transition: transform 0.3s ease, box-shadow 0.3s ease;
+	  display: flex;
+	  flex-direction: column;
+	}
 
-.screenshot-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-}
+	.screenshot-item:hover {
+	  transform: translateY(-6px);
+	  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+	}
 
-/* 圖片容器：固定尺寸 */
-.img-container {
-  width: 320px;
-  height: 200px;             /* 固定高度 */
-  overflow: hidden;
-  background: #f0f0f0;
-}
+	/* 圖片容器：固定尺寸 */
+	.img-container {
+	  width: 320px;
+	  height: 200px;             /* 固定高度 */
+	  overflow: hidden;
+	  background: #f0f0f0;
+	}
 
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;         /* 裁切填滿，不變形 */
-  object-position: center;
-  display: block;
-  transition: transform 0.4s ease;
-}
+	.img-container img {
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;         /* 裁切填滿，不變形 */
+	  object-position: center;
+	  display: block;
+	  transition: transform 0.4s ease;
+	}
 
-.screenshot-item:hover .img-container img {
-  transform: scale(1.08);
-}
+	.screenshot-item:hover .img-container img {
+	  transform: scale(1.08);
+	}
 
-/* 文字說明 */
-.screenshot-item p {
-  padding: 1rem;
-  margin: 0;
-  background: white;
-  font-size: 0.95rem;
-  color: #555;
-  text-align: center;
-  font-weight: 500;
-  border-top: 1px solid #eee;
-}
+	/* 文字說明 */
+	.screenshot-item p {
+	  padding: 1rem;
+	  margin: 0;
+	  background: white;
+	  font-size: 0.95rem;
+	  color: #555;
+	  text-align: center;
+	  font-weight: 500;
+	  border-top: 1px solid #eee;
+	}
 
-/* RWD：手機調整 */
-@media (max-width: 768px) {
-  .screenshot-item,
-  .img-container {
-    flex: 0 0 260px;
-    width: 260px;
-    height: 160px;
-  }
-  
-  .screenshot-carousel {
-    gap: 1rem;
-  }
-  
-  .screenshot-item p {
-    font-size: 0.9rem;
-    padding: 0.8rem;
-  }
-}
+	/* RWD：手機調整 */
+	@media (max-width: 768px) {
+	  .screenshot-item,
+	  .img-container {
+		flex: 0 0 260px;
+		width: 260px;
+		height: 160px;
+	  }
+	  
+	  .screenshot-carousel {
+		gap: 1rem;
+	  }
+	  
+	  .screenshot-item p {
+		font-size: 0.9rem;
+		padding: 0.8rem;
+	  }
+	}
 
-@media (max-width: 480px) {
-  .screenshot-item,
-  .img-container {
-    flex: 0 0 220px;
-    width: 220px;
-    height: 140px;
-  }
-}
+	@media (max-width: 480px) {
+	  .screenshot-item,
+	  .img-container {
+		flex: 0 0 220px;
+		width: 220px;
+		height: 140px;
+	  }
+	}
 
- .back-link {
-      display: block;
-      text-align: center;
-      margin-top: 3rem;
-      color: #9c8b7a;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
+	 .back-link {
+		  display: block;
+		  text-align: center;
+		  margin-top: 3rem;
+		  color: #9c8b7a;
+		  text-decoration: none;
+		  font-weight: 600;
+		  font-size: 1.1rem;
+		}
 	
   </style>
 </head>
@@ -346,7 +346,7 @@
     <!-- 標題 -->
     <div class="header">
       <h1>企業品牌網站設計專案</h1>
-      <p>HTML × CSS × JavaScript × ASP.NET | 校內實作轉企業級應用</p>
+      <p>HTML × CSS × JavaScript × ASP.NET</p>
     </div>
 
     <!-- 主要內容：文字 + 影片 -->
@@ -361,20 +361,20 @@
 
         <h2>完成案例</h2>
         <ul>
-          <li><strong>H&M</strong>：時尚電商風格，動態輪播 + 響應式導覽列</li>
-          <li><strong>萬波島嶼紅茶</strong>：文青飲料風，卡片式選單 + 動態濾鏡</li>
-          <li><strong>日本無俚頭發明</strong>：創意科技風，互動式產品展示 + 3D 動畫</li>
+          <li><strong>H&M</strong>：時尚電商風格，動態輪播 + 響應式導航列 + 直覺式連結導覽 + 圖片翻轉互動 + 下拉式選單</li>
+          <li><strong>萬波</strong>：清新文青風格 + 會員註冊與登入系統 + 線上選購飲料流程</li>
+          <li><strong>日本無俚頭發明</strong>：清新文青風格 + 圖片輪播 + 音樂播放功能 + 互動式地圖功能</li>
         </ul>
 
         <h2>設計思維</h2>
-        <p>
-          在既定框架中融入彈性設計，讓每個品牌呈現獨特風格，同時確保 <strong>功能性、美感、使用者體驗</strong> 三者兼具。
-        </p>
+		<p>
+		  在統一框架下靈活運用彈性設計，精準捕捉各品牌核心調性，確保 <strong>功能性、美學呈現與使用者體驗</strong> 三者達到完美平衡，打造兼具實用性與視覺衝擊的數位門面。
+		</p>
 
-        <h2>學習成長</h2>
-        <p>
-          培養 <strong>前端設計、跨框架應用、全端思維</strong>，成功將課堂理論轉化為實務專案，具備企業級網頁開發能力。
-        </p>
+		<h2>學習成長</h2>
+		<p>
+		  透過實戰淬鍊 <strong>前端設計、跨平台框架應用與全端開發思維</strong>，成功將課堂理論轉化為企業級專案，展現從概念發想到上線部署的完整開發能力。
+		</p>
       </div>
 
       <!-- 右：進階影片播放器（一開始自動播放） -->
