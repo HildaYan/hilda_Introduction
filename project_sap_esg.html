@@ -25,7 +25,7 @@
     <div class="hero-text-clear">
       <h2>專案概述</h2>
       <p class="highlight">
-        透過 <strong>SAP S/4HANA</strong> 提取企業環境、社會、治理（ESG）資料，自訂 <strong>ABAP 報表</strong>，並使用 <strong>Power BI</strong> 建立互動式永續發展儀表板。
+        透過 <strong>EMS、MES、各式系統串接資料到 SAP S/4HANA</strong> ，並使用 <strong>ABAP 提取資料</strong>，再使用 <strong>Power BI</strong> 建立互動式永續發展儀表板。
       </p>
       <div class="tech-tags-lg">
         <span>SAP S/4HANA</span><span>ABAP</span><span>Power BI</span>
@@ -33,30 +33,29 @@
       </div>
     </div>
 
-    <div class="hero-video">
-      <div class="video-wrapper">
-        <video id="projectVideo" class="project-video" preload="metadata" playsinline autoplay muted loop>
-          <source src="videos/sap_esg_demo.mp4" type="video/mp4">
-          您的瀏覽器不支援影片。
-        </video>
-        <div class="video-controls">
-          <button id="playPauseBtn" class="ctrl-btn">
-            <svg viewBox="0 0 24 24" class="icon-play"><path d="M8,5.14V19.14L19,12L8,5.14Z"/></svg>
-            <svg viewBox="0 0 24 24" class="icon-pause" style="display:none;"><path d="M14,19H18V5H14V19ZM6,19H10V5H6V19Z"/></svg>
-          </button>
-          <button id="muteBtn" class="ctrl-btn">
-            <svg viewBox="0 0 24 24" class="icon-volume"><path d="M3,9V15H7L12,20V4L7,9H3ZM16.5,12C16.5,10.23 15.5,8.71 14,7.71V16.29C15.5,15.29 16.5,13.76 16.5,12ZM19,12C19,13.76 18.5,15.29 17,16.29V7.71C18.5,8.71 19,10.23 19,12Z"/></svg>
-            <svg viewBox="0 0 24 24" class="icon-mute" style="display:none;"><path d="M3,9H7L12,4V20L7,15H3V9ZM14.83,11.17L17.66,8.34L16.24,6.93L13.41,9.76L10.59,6.93L9.17,8.34L12,11.17L9.17,14L10.59,15.42L13.41,12.59L16.24,15.42L17.66,14L14.83,11.17Z"/></svg>
-          </button>
-          <div class="progress-container"><div id="progressBar" class="progress-bar"></div></div>
-          <span id="currentTime" class="time">0:00</span> / <span id="duration" class="time">0:00</span>
-          <button id="fullscreenBtn" class="ctrl-btn">
-            <svg viewBox="0 0 24 24"><path d="M7,14H5V19H10V17H7V14ZM5,10H7V7H10V5H5V10ZM17,17H14V19H19V14H17V17ZM14,5V7H17V10H19V5H14Z"/></svg>
-          </button>
-        </div>
-        <p class="video-hint">點擊影片在新分頁觀看完整版本</p>
+    <!-- 關鍵：恢復 .hero-video 包裝，讓 Flex 布局正常運作 -->
+  <div class="hero-video">
+    <div class="video-wrapper" 
+         style="cursor: pointer; position: relative; height: 100%; display: flex; align-items: center; justify-content: center;"
+         onclick="window.open('file/ATV 碳足跡專案_從數據到決策0822.pdf', '_blank')">
+      
+      <!-- PDF 預覽圖（現在會自動填滿右半邊） -->
+      <img src="images/作品集/ATV 碳足跡專案_從數據到決策0822.png"
+           alt="PDF 報告預覽"
+           style="width: 100%; max-width: 660px; border-radius: 20px; box-shadow: 0 20px 45px rgba(0,0,0,0.28); transition: all 0.4s ease;">
+
+      <!-- 懸浮按鈕（置中美觀） -->
+      <div style="position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 14px 32px; border-radius: 50px; font-size: 1.05rem; font-weight: 600; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); white-space: nowrap;">
+        點擊開啟完整 PDF 報告
       </div>
+
+      
     </div>
+
+    <p class="video-hint" style="text-align: center; margin-top: 1.2rem; color: #555; font-size: 0.95rem;">
+      點擊上方預覽圖在新分頁開啟完整報告
+    </p>
+  </div>
   </section>
 
   <!-- 下半部：三欄橫排 -->
@@ -66,18 +65,19 @@
         <h3>核心功能</h3>
         <ul class="project-list-large">
           <li>碳排放與能源消耗追蹤</li>
-          <li>供應鏈永續評分</li>
-          <li>員工多元性與福利分析</li>
-          <li>即時資料視覺化與 KPI 監控</li>
+		  <li>企業合作</li>
+		  <li>SAP S/4HANA</li>		  
+		  <li>Power BI</li>		  
+		  <li>ABAP</li>
         </ul>
       </div>
       <div class="feature-card">
         <h3>技術流程</h3>
-        <p>SAP → <strong>ABAP 資料提取</strong> → <strong>Power BI 資料模型</strong> → 互動式報表發佈。</p>
+        <p>SAP → <strong>ABAP 資料提取</strong> → <strong>Power BI 資料模型</strong> → 互動式報表。</p>
       </div>
       <div class="feature-card">
         <h3>學習成長</h3>
-        <p>掌握 <strong>ERP 系統整合、ABAP 開發、商業智慧分析</strong>，具備企業級 ESG 報表實作能力。</p>
+        <p>掌握 <strong>ERP 系統整合、ABAP 開發、商業智慧分析</strong>，具備企 ESG 報表實作能力。</p>
       </div>
     </div>
 
@@ -86,16 +86,16 @@
       <h3 class="section-title">報表功能截圖</h3>
       <div class="screenshot-carousel">
         <div class="screenshot-item">
-          <div class="img-container"><img src="images/作品集/sap_carbon.png" alt="碳排放儀表板"></div>
-          <p>碳排放趨勢分析</p>
+          <div class="img-container"><img src="images/作品集/sap_MES.png" alt="碳排放儀表板"></div>
+          <p>MES製成活動排放</p>
         </div>
         <div class="screenshot-item">
-          <div class="img-container"><img src="images/作品集/sap_supply.png" alt="供應鏈評分"></div>
-          <p>供應鏈永續評分</p>
+          <div class="img-container"><img src="images/作品集/sap_EMS.png" alt="供應鏈評分"></div>
+          <p>EMS活動排放</p>
         </div>
         <div class="screenshot-item">
-          <div class="img-container"><img src="images/作品集/sap_diversity.png" alt="多元性分析"></div>
-          <p>員工多元性報表</p>
+          <div class="img-container"><img src="images/作品集/ABAP資料提取.png" alt="多元性分析"></div>
+          <p>ABAP資料提取</p>
         </div>
       </div>
     </section>

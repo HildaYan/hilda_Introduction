@@ -308,3 +308,11 @@
   background: rgba(119,107,93,0.95) !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important;
 }
+
+.video-wrapper:hover img {
+        transform: scale(1.05);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.35) !important;
+      }
+      .video-wrapper:hover .play-hint {
+        background: rgba(30,144,255,0.95) !important;
+      }

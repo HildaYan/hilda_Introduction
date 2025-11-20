@@ -21,44 +21,43 @@
     <p>Open Data × Excel × Power BI | 公共資料視覺化分析</p>
   </header>
 
-  <!-- 上半部：左文右影 -->
-  <section class="project-hero">
-    <div class="hero-text-clear">
-      <h2>專案概述</h2>
-      <p class="highlight">
-        串接政府 <strong>Open Data API</strong>，分析全台高速公路事故與動物致死事件，結合 <strong>Excel 樞紐分析表</strong> 與 <strong>Power BI</strong> 打造互動式商業智慧儀表板，揭示事故熱點與動物保護議題。
-      </p>
-      <div class="tech-tags-lg">
-        <span>Open Data</span><span>政府 API</span><span>Excel 樞紐分析</span>
-        <span>Power BI</span><span>資料視覺化</span><span>商業智慧 BI</span>
+ <!-- 上半部：左文右影（完美左右對分） -->
+<section class="project-hero">
+  <div class="hero-text-clear">
+    <h2>專案概述</h2>
+    <p class="highlight">
+      使用政府的 <strong>Open Data API</strong>，分析全台高速公路事故與動物致死事件，結合 <strong>Excel</strong> 與 <strong>Power BI</strong> 打造互動式智慧儀表板，揭示事故熱點與動物致死的關係。
+    </p>
+    <div class="tech-tags-lg">
+      <span>Open Data</span><span>Excel</span>
+      <span>Power BI</span><span>資料視覺化</span><span>商業智慧 BI</span>
+    </div>
+  </div>
+
+  <!-- 關鍵：恢復 .hero-video 包裝，讓 Flex 布局正常運作 -->
+  <div class="hero-video">
+    <div class="video-wrapper" 
+         style="cursor: pointer; position: relative; height: 100%; display: flex; align-items: center; justify-content: center;"
+         onclick="window.open('file/power BI視覺化分析.pdf', '_blank')">
+      
+      <!-- PDF 預覽圖（現在會自動填滿右半邊） -->
+      <img src="images/作品集/highway_report_preview.png"
+           alt="PDF 報告預覽"
+           style="width: 100%; max-width: 660px; border-radius: 20px; box-shadow: 0 20px 45px rgba(0,0,0,0.28); transition: all 0.4s ease;">
+
+      <!-- 懸浮按鈕（置中美觀） -->
+      <div style="position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 14px 32px; border-radius: 50px; font-size: 1.05rem; font-weight: 600; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); white-space: nowrap;">
+        點擊開啟完整 PDF 報告
       </div>
+
+      
     </div>
 
-    <div class="hero-video">
-      <div class="video-wrapper">
-        <video id="projectVideo" class="project-video" preload="metadata" playsinline autoplay muted loop>
-          <source src="videos/highway_analysis_demo.mp4" type="video/mp4">
-          您的瀏覽器不支援影片。
-        </video>
-        <div class="video-controls">
-          <button id="playPauseBtn" class="ctrl-btn">
-            <svg viewBox="0 0 24 24" class="icon-play"><path d="M8,5.14V19.14L19,12L8,5.14Z"/></svg>
-            <svg viewBox="0 0 24 24" class="icon-pause" style="display:none;"><path d="M14,19H18V5H14V19ZM6,19H10V5H6V19Z"/></svg>
-          </button>
-          <button id="muteBtn" class="ctrl-btn">
-            <svg viewBox="0 0 24 24" class="icon-volume"><path d="M3,9V15H7L12,20V4L7,9H3ZM16.5,12C16.5,10.23 15.5,8.71 14,7.71V16.29C15.5,15.29 16.5,13.76 16.5,12ZM19,12C19,13.76 18.5,15.29 17,16.29V7.71C18.5,8.71 19,10.23 19,12Z"/></svg>
-            <svg viewBox="0 0 24 24" class="icon-mute" style="display:none;"><path d="M3,9H7L12,4V20L7,15H3V9ZM14.83,11.17L17.66,8.34L16.24,6.93L13.41,9.76L10.59,6.93L9.17,8.34L12,11.17L9.17,14L10.59,15.42L13.41,12.59L16.24,15.42L17.66,14L14.83,11.17Z"/></svg>
-          </button>
-          <div class="progress-container"><div id="progressBar" class="progress-bar"></div></div>
-          <span id="currentTime" class="time">0:00</span> / <span id="duration" class="time">0:00</span>
-          <button id="fullscreenBtn" class="ctrl-btn">
-            <svg viewBox="0 0 24 24"><path d="M7,14H5V19H10V17H7V14ZM5,10H7V7H10V5H5V10ZM17,17H14V19H19V14H17V17ZM14,5V7H17V10H19V5H14Z"/></svg>
-          </button>
-        </div>
-        <p class="video-hint">點擊影片在新分頁觀看完整版本</p>
-      </div>
-    </div>
-  </section>
+    <p class="video-hint" style="text-align: center; margin-top: 1.2rem; color: #555; font-size: 0.95rem;">
+      點擊上方預覽圖在新分頁開啟完整報告
+    </p>
+  </div>
+</section>
 
   <!-- 下半部：三欄橫排 -->
   <section class="project-content-below">
@@ -66,11 +65,11 @@
       <div class="feature-card">
         <h3>核心功能</h3>
         <ul class="project-list-large">
-          <li>自動擷取政府 Open Data 事故資料</li>
+          <li>擷取政府 Open Data 事故資料</li>
           <li>時間、路段、動物種類多維度分析</li>
-          <li>高速公路事故熱點地圖視覺化</li>
+          <li>高速公路事故視覺化</li>
           <li>互動式 KPI 商業智慧儀表板</li>
-          <li>動物致死趨勢與政策建議</li>
+          <li>動物致死趨勢</li>
         </ul>
       </div>
 
@@ -78,7 +77,7 @@
       <div class="feature-card">
         <h3>資料流程圖</h3>
           <p>
-            Open Data API → <strong>Excel 清理</strong> → <strong>Power BI 模型</strong> → 互動報表<br>完整公共資料分析流程
+            Open Data → <strong>Excel 清理</strong> → <strong>Power BI</strong> → 互動報表<br>完整資料分析流程
           </p>
         </div>
 
@@ -93,16 +92,16 @@
       <h3 class="section-title">報表功能截圖</h3>
       <div class="screenshot-carousel">
         <div class="screenshot-item">
-          <div class="img-container"><img src="images/作品集/highway_map.png" alt="事故熱點圖"></div>
-          <p>高速公路事故熱點地圖</p>
+          <div class="img-container"><img src="images/作品集/highway_year.png" alt="事故熱點圖"></div>
+          <p>民國81年到112年的死亡數、事故數與受傷數</p>
         </div>
         <div class="screenshot-item">
-          <div class="img-container"><img src="images/作品集/highway_trend.png" alt="時間趨勢"></div>
-          <p>事故時間序列趨勢分析</p>
+          <div class="img-container"><img src="images/作品集/highway_speed_limit.png" alt="時間趨勢"></div>
+          <p>各速限區間動物致死件數</p>
         </div>
         <div class="screenshot-item">
-          <div class="img-container"><img src="images/作品集/highway_animal.png" alt="動物種類"></div>
-          <p>動物致死種類統計</p>
+          <div class="img-container"><img src="images/作品集/county_animal.png" alt="動物種類"></div>
+          <p>各縣市動物致死件數</p>
         </div>
       </div>
     </section>
