@@ -1,0 +1,59 @@
+/* base.css 全站重置 + 基礎 */
+
+* { 
+  margin: 0; padding: 0; box-sizing: border-box; 
+}
+
+body {
+  background: linear-gradient(to bottom, #f9f5f2, #f0ece8);
+  min-height: 100vh;
+  padding: 4rem 5%;
+}
+.project-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+/* 標題區：更大氣、置中 */
+.project-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  padding-bottom: 2rem;
+  position: relative;
+}
+.project-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: #9c8b7a;
+  border-radius: 2px;
+}
+.project-header h1 {
+  font-size: 3.2rem;
+  color: #776b5d;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+.project-header p {
+  font-size: 1.3rem;
+  color: #9c8b7a;
+  letter-spacing: 2px;
+}
+/* 主要內容：左右並排*/
+.project-content {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-bottom: 6rem;
+}
+.text-section {
+  background: rgba(255,255,255,0.8);
+  padding: 2.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}

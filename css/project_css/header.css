@@ -1,0 +1,19 @@
+/* header.css */
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e4ddd6;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  color: #776b5d;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: #9c8b7a;
+  font-size: 1.1rem;
+}

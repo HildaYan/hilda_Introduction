@@ -1,0 +1,211 @@
+/* video.css */
+
+.video-section {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  background: #000;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+.project-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 15px;
+}
+
+.video-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.video-wrapper:hover .video-controls {
+  opacity: 1;
+}
+
+.ctrl-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: 0.3s;
+  backdrop-filter: blur(4px);
+  position: relative;
+}
+
+.ctrl-btn:hover {
+  background: rgba(255,255,255,0.4);
+  transform: scale(1.1);
+}
+
+/* Icon 切換 */
+.icon-play::before { content: "Play"; }
+.icon-pause::before { content: "Pause"; }
+.icon-volume::before { content: "Volume"; }
+.icon-mute::before { content: "Mute"; }
+.icon-fullscreen::before { content: "Fullscreen"; }
+
+.ctrl-btn:hover {
+  background: rgba(255,255,255,0.4);
+  transform: scale(1.1);
+}
+
+.progress-container {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #9c8b7a;
+  border-radius: 3px;
+  transition: width 0.1s;
+}
+
+.time {
+  font-size: 0.85rem;
+  min-width: 40px;
+  text-align: center;
+}
+
+.video-hint {
+  text-align: center;
+  margin-top: 0.8rem;
+  color: #9c8b7a;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+/* 可選：用 SVG Icon（更美） */
+.ctrl-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .video-controls {
+	padding: 0.8rem;
+	gap: 0.5rem;
+  }
+  .ctrl-btn {
+	width: 32px;
+	height: 32px;
+	font-size: 0.9rem;
+  }
+  .time { font-size: 0.8rem; }
+}
+	.screenshots {
+  margin-top: 2rem;
+}
+
+.screenshots h3 {
+  text-align: center;
+  color: #776b5d;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.screenshot-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #9c8b7a transparent;
+}
+
+.screenshot-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.screenshot-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.screenshot-carousel::-webkit-scrollbar-thumb {
+  background: #9c8b7a;
+  border-radius: 4px;
+}
+
+.screenshot-item {
+  flex: 0 0 320px;           /* 固定寬度 */
+  scroll-snap-align: center;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.screenshot-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* 右邊影片加大 + 圓角陰影 */
+.project-hero > .hero-video {
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.22);
+}
+
+/* 手機版自動上下排 */
+@media (max-width: 968px) {
+  .project-hero {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .hero-text-clear {
+    height: auto;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .hero-text-clear h2 {
+    padding-left: 0;
+  }
+  .hero-text-clear h2::before {
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .highlight {
+    font-size: 1.15rem;
+    padding: 1.5rem;
+  }
+}

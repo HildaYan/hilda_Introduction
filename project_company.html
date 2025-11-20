@@ -3,614 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>企業品牌網站專案</title>
+  <title>企業品牌網站設計專案</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Noto Sans TC", "Poppins", sans-serif;
-      background: #f3f1ef;
-      color: #444;
-      line-height: 1.8;
-    }
 
-    .container {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: white;
-      border-radius: 18px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 3rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 2px solid #e4ddd6;
-    }
-
-    .header h1 {
-      font-size: 2.2rem;
-      color: #776b5d;
-      margin-bottom: 0.5rem;
-    }
-
-    .header p {
-      color: #9c8b7a;
-      font-size: 1.1rem;
-    }
-
-    .content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: start;
-    }
-
-    .text-section h2 {
-      color: #9c8b7a;
-      margin: 1.5rem 0 1rem;
-      font-size: 1.3rem;
-      position: relative;
-      padding-left: 1rem;
-    }
-
-    .text-section h2::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 5px;
-      height: 20px;
-      background: #9c8b7a;
-      border-radius: 3px;
-    }
-
-    .text-section p {
-      margin-bottom: 1rem;
-      text-align: justify;
-      font-size: 1rem;
-    }
-
-    .text-section ul {
-      margin: 1rem 0;
-      padding-left: 1.5rem;
-    }
-
-    .text-section li {
-      margin-bottom: 0.6rem;
-      position: relative;
-    }
-
-    .text-section li::marker {
-      color: #9c8b7a;
-    }
-
-    .video-section {
-	  position: relative;
-	  border-radius: 15px;
-	  overflow: hidden;
-	  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-	  background: #000;
-	}
-
-	.video-wrapper {
-	  position: relative;
-	  width: 100%;
-	  cursor: pointer;
-	}
-
-	.project-video {
-	  width: 100%;
-	  height: 100%;
-	  object-fit: cover;
-	  display: block;
-	  border-radius: 15px;
-	}
-
-	.video-controls {
-	  position: absolute;
-	  bottom: 0;
-	  left: 0;
-	  right: 0;
-	  background: linear-gradient(transparent, rgba(0,0,0,0.8));
-	  padding: 1rem;
-	  display: flex;
-	  align-items: center;
-	  gap: 0.8rem;
-	  opacity: 0;
-	  transition: opacity 0.3s;
-	  color: white;
-	  font-size: 0.9rem;
-	}
-
-	.video-wrapper:hover .video-controls {
-	  opacity: 1;
-	}
-
-	.ctrl-btn {
-	  background: rgba(255,255,255,0.2);
-	  color: white;
-	  border: none;
-	  width: 40px;
-	  height: 40px;
-	  border-radius: 50%;
-	  cursor: pointer;
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  font-size: 1.1rem;
-	  transition: 0.3s;
-	  backdrop-filter: blur(4px);
-	  position: relative;
-	}
-
-	.ctrl-btn:hover {
-	  background: rgba(255,255,255,0.4);
-	  transform: scale(1.1);
-	}
-
-	/* Icon 切換 */
-	.icon-play::before { content: "Play"; }
-	.icon-pause::before { content: "Pause"; }
-	.icon-volume::before { content: "Volume"; }
-	.icon-mute::before { content: "Mute"; }
-	.icon-fullscreen::before { content: "Fullscreen"; }
-
-	.ctrl-btn:hover {
-	  background: rgba(255,255,255,0.4);
-	  transform: scale(1.1);
-	}
-
-	.progress-container {
-	  flex: 1;
-	  height: 6px;
-	  background: rgba(255,255,255,0.3);
-	  border-radius: 3px;
-	  cursor: pointer;
-	  position: relative;
-	  overflow: hidden;
-	}
-
-	.progress-bar {
-	  height: 100%;
-	  width: 0%;
-	  background: #9c8b7a;
-	  border-radius: 3px;
-	  transition: width 0.1s;
-	}
-
-	.time {
-	  font-size: 0.85rem;
-	  min-width: 40px;
-	  text-align: center;
-	}
-
-	.video-hint {
-	  text-align: center;
-	  margin-top: 0.8rem;
-	  color: #9c8b7a;
-	  font-size: 0.9rem;
-	  font-style: italic;
-	}
-	/* 可選：用 SVG Icon（更美） */
-	.ctrl-btn svg {
-	  width: 18px;
-	  height: 18px;
-	  fill: currentColor;
-	}
-
-	/* RWD */
-	@media (max-width: 768px) {
-	  .video-controls {
-		padding: 0.8rem;
-		gap: 0.5rem;
-	  }
-	  .ctrl-btn {
-		width: 32px;
-		height: 32px;
-		font-size: 0.9rem;
-	  }
-	  .time { font-size: 0.8rem; }
-	}
-		.screenshots {
-	  margin-top: 2rem;
-	}
-
-	.screenshots h3 {
-	  text-align: center;
-	  color: #776b5d;
-	  margin-bottom: 1.5rem;
-	  font-size: 1.4rem;
-	}
-
-	.screenshot-carousel {
-	  display: flex;
-	  overflow-x: auto;
-	  gap: 1.2rem;
-	  padding: 1rem 0;
-	  scroll-snap-type: x mandatory;
-	  scrollbar-width: thin;
-	  scrollbar-color: #9c8b7a transparent;
-	}
-
-	.screenshot-carousel::-webkit-scrollbar {
-	  height: 8px;
-	}
-
-	.screenshot-carousel::-webkit-scrollbar-track {
-	  background: transparent;
-	}
-
-	.screenshot-carousel::-webkit-scrollbar-thumb {
-	  background: #9c8b7a;
-	  border-radius: 4px;
-	}
-
-	.screenshot-item {
-	  flex: 0 0 320px;           /* 固定寬度 */
-	  scroll-snap-align: center;
-	  background: white;
-	  border-radius: 16px;
-	  overflow: hidden;
-	  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-	  transition: transform 0.3s ease, box-shadow 0.3s ease;
-	  display: flex;
-	  flex-direction: column;
-	}
-
-	.screenshot-item:hover {
-	  transform: translateY(-6px);
-	  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-	}
-
-	/* 圖片容器：固定尺寸 */
-	.img-container {
-	  width: 320px;
-	  height: 200px;             /* 固定高度 */
-	  overflow: hidden;
-	  background: #f0f0f0;
-	}
-
-	.img-container img {
-	  width: 100%;
-	  height: 100%;
-	  object-fit: cover;         /* 裁切填滿，不變形 */
-	  object-position: center;
-	  display: block;
-	  transition: transform 0.4s ease;
-	}
-
-	.screenshot-item:hover .img-container img {
-	  transform: scale(1.08);
-	}
-
-	/* 文字說明 */
-	.screenshot-item p {
-	  padding: 1rem;
-	  margin: 0;
-	  background: white;
-	  font-size: 0.95rem;
-	  color: #555;
-	  text-align: center;
-	  font-weight: 500;
-	  border-top: 1px solid #eee;
-	}
-
-	/* RWD：手機調整 */
-	@media (max-width: 768px) {
-	  .screenshot-item,
-	  .img-container {
-		flex: 0 0 260px;
-		width: 260px;
-		height: 160px;
-	  }
-	  
-	  .screenshot-carousel {
-		gap: 1rem;
-	  }
-	  
-	  .screenshot-item p {
-		font-size: 0.9rem;
-		padding: 0.8rem;
-	  }
-	}
-
-	@media (max-width: 480px) {
-	  .screenshot-item,
-	  .img-container {
-		flex: 0 0 220px;
-		width: 220px;
-		height: 140px;
-	  }
-	}
-
-	 .back-link {
-		  display: block;
-		  text-align: center;
-		  margin-top: 3rem;
-		  color: #9c8b7a;
-		  text-decoration: none;
-		  font-weight: 600;
-		  font-size: 1.1rem;
-		}
-	
-  </style>
+  <!-- 只保留必要的 CSS，移除 container 限制 -->
+  <link rel="stylesheet" href="css/project_css/base.css">
+  <link rel="stylesheet" href="css/project_css/header.css">
+  <link rel="stylesheet" href="css/project_css/content.css">
+  <link rel="stylesheet" href="css/project_css/video.css">
+  <link rel="stylesheet" href="css/project_css/images.css">
 </head>
 <body>
+<div class="project-wrapper">
 
-  <div class="container">
+  <!-- 大標題 -->
+  <header class="project-header">
+    <h1>企業品牌網站設計專案</h1>
+    <p>HTML × CSS × JavaScript × ASP.NET</p>
+  </header>
 
-    <!-- 標題 -->
-    <div class="header">
-      <h1>企業品牌網站設計專案</h1>
-      <p>HTML × CSS × JavaScript × ASP.NET</p>
-    </div>
-
-    <!-- 主要內容：文字 + 影片 -->
-    <div class="content">
-
-      <!-- 左：文字敘述 -->
-      <div class="text-section">
-        <h2>專案概述</h2>
-        <p>
-          以 <strong>HTML、CSS、JavaScript 與 ASP.NET</strong> 為核心，將老師提供的基礎模板轉化為三個知名品牌的企業專屬網站，兼顧規範與創意設計。
-        </p>
-
-        <h2>完成案例</h2>
-        <ul>
-          <li><strong>H&M</strong>：時尚電商風格，動態輪播 + 響應式導航列 + 直覺式連結導覽 + 圖片翻轉互動 + 下拉式選單</li>
-          <li><strong>萬波</strong>：清新文青風格 + 會員註冊與登入系統 + 線上選購飲料流程</li>
-          <li><strong>日本無俚頭發明</strong>：清新文青風格 + 圖片輪播 + 音樂播放功能 + 互動式地圖功能</li>
-        </ul>
-
-        <h2>設計思維</h2>
-		<p>
-		  在統一框架下靈活運用彈性設計，精準捕捉各品牌核心調性，確保 <strong>功能性、美學呈現與使用者體驗</strong> 三者達到完美平衡，打造兼具實用性與視覺衝擊的數位門面。
-		</p>
-
-		<h2>學習成長</h2>
-		<p>
-		  透過實戰淬鍊 <strong>前端設計、跨平台框架應用與全端開發思維</strong>，成功將課堂理論轉化為企業級專案，展現從概念發想到上線部署的完整開發能力。
-		</p>
-      </div>
-
-      <!-- 右：進階影片播放器（一開始自動播放） -->
-<div class="video-section">
-  <div class="video-wrapper">
-    <!-- 影片：加入 autoplay + muted + loop -->
-    <video 
-      id="projectVideo" 
-      class="project-video" 
-      preload="metadata" 
-      playsinline 
-      autoplay 
-      muted 
-      loop>
-      <source src="videos/企業網頁設計歷程.mp4" type="video/mp4">
-      您的瀏覽器不支援影片。
-    </video>
-
-    <!-- 自訂控制列 -->
-    <div class="video-controls">
-      <!-- 播放 / 暫停 -->
-      <button id="playPauseBtn" class="ctrl-btn">
-        <svg viewBox="0 0 24 24" class="icon-play"><path d="M8,5.14V19.14L19,12L8,5.14Z"/></svg>
-        <svg viewBox="0 0 24 24" class="icon-pause" style="display:none;"><path d="M14,19H18V5H14V19ZM6,19H10V5H6V19Z"/></svg>
-      </button>
-
-      <!-- 靜音 / 開聲 -->
-      <button id="muteBtn" class="ctrl-btn">
-        <svg viewBox="0 0 24 24" class="icon-volume"><path d="M3,9V15H7L12,20V4L7,9H3ZM16.5,12C16.5,10.23 15.5,8.71 14,7.71V16.29C15.5,15.29 16.5,13.76 16.5,12ZM19,12C19,13.76 18.5,15.29 17,16.29V7.71C18.5,8.71 19,10.23 19,12Z"/></svg>
-        <svg viewBox="0 0 24 24" class="icon-mute" style="display:none;"><path d="M3,9H7L12,4V20L7,15H3V9ZM14.83,11.17L17.66,8.34L16.24,6.93L13.41,9.76L10.59,6.93L9.17,8.34L12,11.17L9.17,14L10.59,15.42L13.41,12.59L16.24,15.42L17.66,14L14.83,11.17Z"/></svg>
-      </button>
-
-      <!-- 進度條 -->
-      <div class="progress-container">
-        <div id="progressBar" class="progress-bar"></div>
-      </div>
-
-      <!-- 時間 -->
-      <span id="currentTime" class="time">0:00</span> / 
-      <span id="duration" class="time">0:00</span>
-
-      <!-- 全螢幕 -->
-      <button id="fullscreenBtn" class="ctrl-btn">
-        <svg viewBox="0 0 24 24"><path d="M7,14H5V19H10V17H7V14ZM5,10H7V7H10V5H5V10ZM17,17H14V19H19V14H17V17ZM14,5V7H17V10H19V5H14Z"/></svg>
-      </button>
-    </div>
-
-    <!-- 點擊提示 -->
-    <p class="video-hint">
-      點擊影片在新分頁觀看完整版本
-    </p>
-  </div>
-</div>
-	<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const video = document.getElementById('projectVideo');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const muteBtn = document.getElementById('muteBtn');
-  const progressBar = document.getElementById('progressBar');
-  const progressContainer = document.querySelector('.progress-container');
-  const currentTimeEl = document.getElementById('currentTime');
-  const durationEl = document.getElementById('duration');
-  const fullscreenBtn = document.getElementById('fullscreenBtn');
-  const videoWrapper = document.querySelector('.video-wrapper');
-
-  // 強制自動播放（靜音 + 循環）
-  const startAutoPlay = () => {
-    video.muted = true;
-    video.loop = true;
-    video.play().catch(error => {
-      console.log("自動播放被阻止，等待使用者互動", error);
-      // 備用：使用者第一次點擊頁面後啟動
-      const activateOnClick = () => {
-        video.play();
-        document.body.removeEventListener('click', activateOnClick);
-      };
-      document.body.addEventListener('click', activateOnClick, { once: true });
-    });
-  };
-
-  // 初始化自動播放
-  startAutoPlay();
-
-  // 格式化時間
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  };
-
-  // 更新進度條
-  const updateProgress = () => {
-    if (video.duration) {
-      const percent = (video.currentTime / video.duration) * 100;
-      progressBar.style.width = `${percent}%`;
-      currentTimeEl.textContent = formatTime(video.currentTime);
-    }
-  };
-
-  // 播放/暫停按鈕
-  playPauseBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (video.paused) {
-      video.play();
-      playPauseBtn.querySelector('.icon-play').style.display = 'none';
-      playPauseBtn.querySelector('.icon-pause').style.display = 'block';
-    } else {
-      video.pause();
-      playPauseBtn.querySelector('.icon-play').style.display = 'block';
-      playPauseBtn.querySelector('.icon-pause').style.display = 'none';
-    }
-  });
-
-  // 靜音切換
-  muteBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    video.muted = !video.muted;
-    muteBtn.querySelector('.icon-volume').style.display = video.muted ? 'none' : 'block';
-    muteBtn.querySelector('.icon-mute').style.display = video.muted ? 'block' : 'none';
-  });
-
-  // 進度條點擊
-  progressContainer.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const rect = progressContainer.getBoundingClientRect();
-    const pos = (e.clientX - rect.left) / rect.width;
-    video.currentTime = pos * video.duration;
-  });
-
-  // 全螢幕
-  fullscreenBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (video.requestFullscreen) video.requestFullscreen();
-    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
-    else if (video.msRequestFullscreen) video.msRequestFullscreen();
-  });
-
-  // 時間更新
-  video.addEventListener('loadedmetadata', () => {
-    durationEl.textContent = formatTime(video.duration);
-  });
-  video.addEventListener('timeupdate', updateProgress);
-
-  // 點擊影片 → 新分頁開啟
-  videoWrapper.addEventListener('click', (e) => {
-    if (e.target.closest('.video-controls')) return;
-    const newTab = window.open('', '_blank');
-    newTab.document.write(`
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <title>企業網頁設計歷程 - 完整影片</title>
-          <style>
-            body,html{margin:0;height:100%;background:#000;display:flex;justify-content:center;align-items:center;}
-            video{max-width:100%;max-height:100%;}
-          </style>
-        </head>
-        <body>
-          <video controls autoplay loop>
-            <source src="${video.querySelector('source').src}" type="video/mp4">
-          </video>
-        </body>
-      </html>
-    `);
-  });
-
-  // 滑鼠移入顯示控制列
-  let controlsTimeout;
-  const showControls = () => {
-    document.querySelector('.video-controls').style.opacity = '1';
-    clearTimeout(controlsTimeout);
-    controlsTimeout = setTimeout(() => {
-      if (!video.paused) {
-        document.querySelector('.video-controls').style.opacity = '0';
-      }
-    }, 3000);
-  };
-
-  videoWrapper.addEventListener('mousemove', showControls);
-  videoWrapper.addEventListener('mouseenter', showControls);
-  videoWrapper.addEventListener('click', showControls);
-});
-</script>
-
-    <!-- 技術亮點 -->
-    <div class="tech-highlights">
-      <h3>核心技術</h3>
-      <div class="tech-tags">
-        <span>HTML5</span>
-        <span>CSS3</span>
-        <span>JavaScript</span>
-        <span>ASP.NET</span>
-        <span>響應式設計</span>
-        <span>SEO 優化</span>
-        <span>動態互動</span>
-      </div>
-    </div>
-
+  <!-- 上半部：左邊專 René 概述 + 右邊影片（完美並排） -->
+  <section class="project-hero">
     
+    <!-- 左邊：專案概述（完全透明 + 置中 + 保留優雅效果） -->
+	<div class="hero-text-clear">
+	  <h2>專案概述</h2>
+	  <p class="highlight">
+		以 <strong>HTML、CSS、JavaScript 與 ASP.NET</strong> 為核心，將老師提供的基礎模板轉化為三個知名品牌的企業專屬網站，兼顧規範與創意設計。
+	  </p>
+	  <div class="tech-tags-lg">
+		<span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+		<span>ASP.NET</span><span>RWD</span><span>SEO</span><span>全端開發</span>
+	  </div>
+	</div>
+
+    <!-- 右邊：影片（視覺主焦點） -->
+    <div class="hero-video">
+      <div class="video-wrapper">
+        <video id="projectVideo" class="project-video" preload="metadata" playsinline autoplay muted loop>
+          <source src="videos/企業網頁設計歷程.mp4" type="video/mp4">
+          您的瀏覽器不支援影片。
+        </video>
+        <div class="video-controls">
+          <button id="playPauseBtn" class="ctrl-btn">
+            <svg viewBox="0 0 24 24" class="icon-play"><path d="M8,5.14V19.14L19,12L8,5.14Z"/></svg>
+            <svg viewBox="0 0 24 24" class="icon-pause" style="display:none;"><path d="M14,19H18V5H14V19ZM6,19H10V5H6V19Z"/></svg>
+          </button>
+          <button id="muteBtn" class="ctrl-btn">
+            <svg viewBox="0 0 24 24" class="icon-volume"><path d="M3,9V15H7L12,20V4L7,9H3ZM16.5,12C16.5,10.23 15.5,8.71 14,7.71V16.29C15.5,15.29 16.5,13.76 16.5,12ZM19,12C19,13.76 18.5,15.29 17,16.29V7.71C18.5,8.71 19,10.23 19,12Z"/></svg>
+            <svg viewBox="0 0 24 24" class="icon-mute" style="display:none;"><path d="M3,9H7L12,4V20L7,15H3V9ZM14.83,11.17L17.66,8.34L16.24,6.93L13.41,9.76L10.59,6.93L9.17,8.34L12,11.17L9.17,14L10.59,15.42L13.41,12.59L16.24,15.42L17.66,14L14.83,11.17Z"/></svg>
+          </button>
+          <div class="progress-container"><div id="progressBar" class="progress-bar"></div></div>
+          <span id="currentTime" class="time">0:00</span> / <span id="duration" class="time">0:00</span>
+          <button id="fullscreenBtn" class="ctrl-btn">
+            <svg viewBox="0 0 24 24"><path d="M7,14H5V19H10V17H7V14ZM5,10H7V7H10V5H5V10ZM17,17H14V19H19V14H17V17ZM14,5V7H17V10H19V5H14Z"/></svg>
+          </button>
+        </div>
+        <p class="video-hint">點擊影片在新分頁觀看完整版本</p>
+      </div>
+    </div>
+  </section>
+<section class="project-content-below">
+  <div class="three-columns-grid">
+
+    <!-- 完成案例 -->
+    <div class="feature-card">
+      <h3>完成案例</h3>
+      <ul class="project-list-large">
+        <li><strong>H&M</strong>：時尚電商風格，動態輪播 + 響應式導航列 + 圖片翻轉互動</li>
+        <li><strong>萬波</strong>：清新文青風格 + 會員登入 + 線上選購流程</li>
+        <li><strong>日本無俚頭發明</strong>：創意科技風格 + 音樂播放 + 互動地圖</li>
+      </ul>
+    </div>
+
+    <!-- 設計思維 -->
+    <div class="feature-card">
+      <h3>設計思維</h3>
+      <p>在統一框架下靈活運用彈性設計，精準捕捉各品牌核心調性，確保 <strong>功能性、美學呈現與使用者體驗</strong> 三者達到完美平衡，打造兼具實用性與視覺衝擊的數位門面。</p>
+    </div>
+
+    <!-- 學習成長 -->
+    <div class="feature-card">
+      <h3>學習成長</h3>
+      <p>透過實戰淬鍊 <strong>前端設計、跨平台框架應用與全端開發思維</strong>，成功將課堂理論轉化為企業級專案，展現從概念發想到上線部署的完整開發能力。</p>
+    </div>
+
+  </div>
+
+  <!-- 品牌截圖輪播（保持不變） -->
+  <!-- 品牌截圖輪播（完美水平置中 + 高級感） -->
+<section class="screenshots-section">
+  <h3 class="section-title">品牌網站截圖</h3>
+  
+  <div class="screenshot-carousel">
+    <div class="screenshot-item">
+      <div class="img-container">
+        <img src="images/作品集/hm_preview.png" alt="H&M 網站">
+      </div>
+      <p>H&M 時尚電商版面</p>
+    </div>
+    <div class="screenshot-item">
+      <div class="img-container">
+        <img src="images/作品集/wanbo_preview.png" alt="萬波網站">
+      </div>
+      <p>萬波文青飲料風</p>
+    </div>
+    <div class="screenshot-item">
+      <div class="img-container">
+        <img src="images/作品集/muri_preview.png" alt="無俚頭網站">
+      </div>
+      <p>日本無俚頭創意科技</p>
+    </div>
+  </div>
+</section>
+</section>
+
+  <!-- 返回按鈕 -->
+  <a href="index.html#portfolio" class="back-link">返回作品集</a>
+
 </div>
 
-<!-- 品牌截圖輪播 -->
-	<div class="screenshots">
-	  <h3>品牌網站截圖</h3>
-	  <div class="screenshot-carousel">
-		
-		<!-- H&M -->
-		<div class="screenshot-item">
-		  <div class="img-container">
-			<img src="images/作品集/hm_preview.png" alt="H&M 網站">
-		  </div>
-		  <p>H&M 時尚電商版面</p>
-		</div>
-
-		<!-- 萬波 -->
-		<div class="screenshot-item">
-		  <div class="img-container">
-			<img src="images/作品集/wanbo_preview.png" alt="萬波網站">
-		  </div>
-		  <p>萬波文青飲料風</p>
-		</div>
-
-		<!-- 無俚頭 -->
-		<div class="screenshot-item">
-		  <div class="img-container">
-			<img src="images/作品集/muri_preview.png" alt="無俚頭網站">
-		  </div>
-		  <p>日本無俚頭創意科技</p>
-		</div>
-
-  </div>
-
-    <!-- 返回按鈕 -->
-    <a href="index.html#portfolio" class="back-link">← 返回作品集</a>
-
-  </div>
-
+<script src="js/video.js"></script>
 </body>
 </html>
